@@ -1,0 +1,69 @@
+{
+ "nombre": "Revista Colombiana de Medicina",
+ "issnLinea": "2500-4751",
+ "issnImpreso": "2027-5188",
+ "ciudad": "Santa Marta, Magdalena, Colombia",
+ "etiquetaEpoca": "Nueva época · 2026",
+ "descripcion": "Publicación científica de acceso abierto dedicada a la difusión de la investigación, las revisiones de tema y la educación médica en Colombia y América Latina.",
+ "numeroActual": "v1n1",
+ "avisos": [],
+ "editorial": {
+  "mostrar": true,
+  "titulo": "Editorial · Una nueva época",
+  "texto": "La **Revista Colombiana de Medicina** reanuda su publicación con una nueva época. Nuestro compromiso es ofrecer a médicos, investigadores, docentes y estudiantes un espacio riguroso, gratuito y abierto para compartir conocimiento útil para la práctica clínica y la salud pública.\n\nEste primer número de la nueva época reúne revisiones sobre el **neurodesarrollo y el trastorno del espectro autista** —en particular, el papel del metabolismo del folato— y sobre un problema de salud pública global: la **multirresistencia bacteriana**. Desde ya invitamos a la comunidad médica a enviar sus trabajos para los próximos números.",
+  "firma": "Ricardo Londoño González, MD, MSc, Editor jefe"
+ },
+ "convocatoria": {
+  "mostrar": true,
+  "etiqueta": "Convocatoria abierta · Núm. 2",
+  "titulo": "Número 2 · Noviembre de 2026",
+  "texto": "La **Revista Colombiana de Medicina** invita a médicos, investigadores, docentes y estudiantes de ciencias de la salud a enviar artículos originales, revisiones de tema, reportes de caso y artículos de educación médica.\n\n**Tema central del Número 2:** epidemiología, infectología y salud pública. Se reciben también manuscritos de otras áreas de la medicina para números siguientes.",
+  "fechaLimite": "2026-10-20",
+  "fechaPublicacion": "2026-11-05",
+  "notas": [
+   "Publicación gratuita para autores y en acceso abierto (CC BY-NC 4.0).",
+   "Los manuscritos recibidos después de la fecha límite se evaluarán para números posteriores."
+  ],
+  "asuntoCorreo": "Manuscrito - Convocatoria Número 2"
+ },
+ "autores": {
+  "tipos": ["Artículos originales de investigación", "Artículos de revisión", "Reportes de caso", "Artículos de educación médica", "Cartas al editor"],
+  "proceso": ["Envío del manuscrito al correo de la revista.", "Revisión editorial inicial (pertinencia y formato).", "Evaluación por pares en modalidad doble ciego.", "Decisión editorial y ajustes.", "Publicación en acceso abierto."],
+  "requisitos": ["Inédito y no enviado a otra revista.", "Título, resumen y palabras clave en español e inglés.", "Referencias en estilo Vancouver o APA.", "Declaración de conflictos de interés.", "Aval de comité de ética cuando incluya pacientes."],
+  "etica": "La revista sigue las recomendaciones del ICMJE y del COPE. Los artículos se publican en acceso abierto bajo licencia **Creative Commons Atribución-NoComercial 4.0**: cualquier persona puede leerlos, descargarlos y compartirlos citando al autor y sin fines comerciales. Los autores conservan sus derechos."
+ },
+ "comite": {
+  "editorJefe": { "nombre": "Ricardo Londoño González, MD, MSc", "detalle": "Médico (Universidad del Magdalena) · MSc (Universidad Rey Juan Carlos, España) · Grupo de Investigación en Inmunología y Patología (GIPAT), Universidad del Magdalena" },
+  "miembros": [],
+  "textoCientifico": "En conformación. Los profesionales interesados en participar como pares evaluadores pueden escribir al correo de la revista.",
+  "asesoria": { "nombre": "Clínica Reina Elizabeth IPS", "detalle": "Santa Marta, Magdalena, Colombia" }
+ },
+ "formacion": {
+  "diplomado": {
+   "mostrar": true,
+   "titulo": "Diplomado en Neurodivergencia",
+   "texto": "Profundice en autismo (TEA), TDAH y otras condiciones del neurodesarrollo: detección, abordaje y acompañamiento en familia y escuela. Inicia el 12 de octubre de 2026.",
+   "enlace": "https://wa.me/573013444422?text=Hola%2C%20vengo%20de%20la%20Revista%20Colombiana%20de%20Medicina%20y%20quiero%20informaci%C3%B3n%20sobre%20el%20Diplomado%20en%20Neurodivergencia.",
+   "textoBoton": "💬 Información e inscripciones",
+   "esWhatsapp": true
+  },
+  "cursos": {
+   "mostrar": true,
+   "etiqueta": "En convenio con POLIANDES",
+   "titulo": "Cursos de actualización para personal de salud",
+   "texto": "Cursos que las instituciones de salud exigen a médicos, enfermeras y demás personal asistencial para la habilitación de servicios.",
+   "grupos": [
+    { "titulo": "Reanimación y soporte vital", "items": ["Soporte vital básico (SVB / BLS)", "Soporte vital avanzado (SVA / ACLS)", "Soporte vital pediátrico (PALS)", "Reanimación neonatal"] },
+    { "titulo": "Materno-infantil", "items": ["AIEPI: Atención Integrada a las Enfermedades Prevalentes de la Infancia", "Atención y cuidado del paciente neonatal (UCI neonatal)"] },
+    { "titulo": "Exigidos por la Resolución 3100 de 2019", "items": ["Atención integral a víctimas de violencia sexual", "Triage (Resolución 5596 de 2015)", "Seguridad del paciente: control de infecciones, identificación correcta y comunicación asertiva", "Pruebas en el punto de atención (POCT)", "Atención en salud mental", "Gestión del duelo", "Cuidado del donante de órganos y tejidos"] }
+   ],
+   "textoGold": "**Membresía Gold · Formación continua en convenio con POLIANDES:** cursos obligatorios de actualización para profesionales de la salud (reanimación SVB/SVA/PALS/neonatal, AIEPI, UCI neonatal y cursos de la Resolución 3100 de 2019). Los miembros Gold tienen 90 % de descuento y prioridad en los cupos.",
+   "enlace": "https://poliandes.com/profesionales-salud/?ref=revista",
+   "textoBoton": "Ver cursos de actualización (90 % de descuento Gold)"
+  }
+ },
+ "contacto": {
+  "correo": "contacto@revistacolombianademedicina.com",
+  "whatsappSoporte": "3044375758"
+ }
+}
