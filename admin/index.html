@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel · Revista Colombiana de Medicina</title>
+<link rel="icon" href="/assets/img/icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#0B4F8A;--azul2:#1867B0;--verde:#14A38B;--verde-osc:#0E8571;--wa:#1F8A4C;--fondo:#F4F8FB;--sup:#fff;--texto:#1C2B39;--suave:#5D6B78;--borde:#DCE5EE;--azul-claro:#E8F1FA;--verde-claro:#E3F6F2;--rojo:#C0392B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--texto);font:16px/1.55 'Public Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Barlow Condensed',system-ui,sans-serif;line-height:1.15;margin:.2em 0 .5em}
+h2{font-size:28px;color:var(--azul)}h3{font-size:21px}
+a{color:var(--azul)}
+.barra{background:#fff;box-shadow:0 2px 12px rgba(11,79,138,.10);position:sticky;top:0;z-index:10}
+.barra .in{max-width:1000px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.barra b{font-family:'Barlow Condensed';font-size:22px;color:var(--azul)}
+.barra small{display:block;color:var(--suave);font-size:12px}
+.barra .acc{margin-left:auto;display:flex;gap:8px}
+main{max-width:1000px;margin:auto;padding:20px 16px 60px}
+.caja{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 2px 14px rgba(11,79,138,.06)}
+.oculto{display:none!important}
+label{display:block;font-weight:700;font-size:14px;margin:14px 0 5px}
+.ayuda{font-size:13px;color:var(--suave);margin:4px 0 0}
+input[type=text],input[type=url],input[type=email],input[type=date],input[type=number],input[type=password],select,textarea{width:100%;padding:10px 12px;border:1.5px solid var(--borde);border-radius:10px;font:inherit;background:#fff;color:var(--texto)}
+textarea{min-height:110px;resize:vertical}
+textarea.alto{min-height:220px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px var(--azul-claro)}
+.check{display:flex;align-items:center;gap:8px;font-weight:600;margin:14px 0 4px}
+.check input{width:20px;height:20px}
+.fila{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 14px}
+.boton{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--azul);background:#fff;color:var(--azul);font:700 15px 'Public Sans',sans-serif;cursor:pointer;text-decoration:none}
+.b-principal{background:var(--azul);color:#fff}.b-principal:hover{background:var(--azul2)}
+.b-accion{background:var(--verde);border-color:var(--verde);color:#fff}.b-accion:hover{background:var(--verde-osc)}
+.b-peligro{border-color:var(--rojo);color:var(--rojo)}
+.b-chico{padding:6px 11px;font-size:13px}
+.botones{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pestanas{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.pestana{border:1.5px solid var(--borde);background:#fff;border-radius:999px;padding:8px 14px;font:700 14px 'Public Sans',system-ui,sans-serif;cursor:pointer;color:var(--texto)}
+.pestana[aria-selected=true]{background:var(--verde);border-color:var(--verde);color:#fff}
+.item{display:flex;gap:12px;align-items:center;border:1px solid var(--borde);border-radius:12px;padding:12px;margin-bottom:8px;background:#fff}
+.item__txt{flex:1;min-width:0}.item__txt b{display:block}.item__txt span{font-size:13px;color:var(--suave)}
+.item__btn{display:flex;gap:6px;flex-wrap:wrap}
+.aviso{border-radius:10px;padding:12px 14px;margin:12px 0;font-weight:600}
+.aviso.ok{background:var(--verde-claro);border:1px solid #a9e2d6;color:#0b5e50}
+.aviso.error{background:#fdecea;border:1px solid #f5c2bc;color:#8e2b20}
+.aviso.info{background:var(--azul-claro);border:1px solid #c9dcf0;color:var(--azul)}
+.renglon{border:1px dashed var(--borde);border-radius:12px;padding:10px 12px;margin:8px 0;background:#fbfdff}
+.renglon .quitar{float:right}
+.pdf-estado{font-size:14px;margin-top:6px}
+#cargando{position:fixed;inset:0;background:rgba(28,43,57,.45);display:flex;align-items:center;justify-content:center;z-index:50}
+#cargando div{background:#fff;padding:20px 26px;border-radius:14px;font-weight:700}
+details summary{cursor:pointer;font-weight:700;color:var(--azul)}
+ol li{margin-bottom:6px}
+.pie{font-size:13px;color:var(--suave);text-align:center;margin-top:30px}
+</style>
+</head>
+<body>
+<header class="barra"><div class="in">
+  <svg viewBox="0 0 64 64" width="38" height="38" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#0B4F8A"/><path d="M32 14v36M14 32h36" stroke="#14A38B" stroke-width="9" stroke-linecap="round"/><circle cx="32" cy="32" r="5" fill="#fff"/></svg>
+  <div><b>Panel de la revista</b><small id="nombre-sitio"></small></div>
+  <div class="acc oculto" id="acciones-barra">
+    <a class="boton b-chico" href="/" target="_blank" rel="noopener">Ver la web</a>
+    <button class="boton b-chico" type="button" id="btn-salir">Salir</button>
+  </div>
+</div></header>
+
+<main>
+<!-- ============ INGRESO ============ -->
+<section id="vista-ingreso" class="caja" style="max-width:620px;margin:30px auto">
+  <h2>Entrar al panel</h2>
+  <p>Pegue aquí la <b>contraseña del panel</b>. Esta contraseña solo sirve para esta web (<span id="nombre-repo"></span>) y queda guardada únicamente en este equipo.</p>
+  <label for="llave">Contraseña del panel</label>
+  <input type="password" id="llave" autocomplete="off" placeholder="github_pat_…">
+  <label class="check"><input type="checkbox" id="recordar" checked> Recordar en este equipo</label>
+  <div class="botones"><button class="boton b-principal" type="button" id="btn-entrar">Entrar</button></div>
+  <div id="aviso-ingreso"></div>
+  <details style="margin-top:18px"><summary>¿No tiene la contraseña? Cómo crearla (una sola vez)</summary>
+    <ol>
+      <li>Inicie sesión en GitHub y abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">esta página para crear la contraseña</a>.</li>
+      <li>En <b>Token name</b> escriba: <i id="nombre-llave"></i>. En <b>Expiration</b> elija <b>No expiration</b>.</li>
+      <li>En <b>Repository access</b> elija <b>Only select repositories</b> y marque solo <b id="nombre-repo2"></b>.</li>
+      <li>En <b>Permissions → Repository permissions</b>, busque <b>Contents</b> y elija <b>Read and write</b>.</li>
+      <li>Pulse <b>Generate token</b>, copie el código que empieza por <b>github_pat_</b> y péguelo arriba.</li>
+    </ol>
+    <p class="ayuda">Si pierde el computador, borre esa contraseña en GitHub (Settings → Developer settings → Personal access tokens) y cree una nueva. Las demás webs no se ven afectadas.</p>
+  </details>
+</section>
+
+<!-- ============ PANEL ============ -->
+<section id="vista-panel" class="oculto">
+  <div id="aviso-panel"></div>
+  <nav class="pestanas" role="tablist">
+    <button class="pestana" data-pestana="articulos" aria-selected="true">Artículos</button>
+    <button class="pestana" data-pestana="numeros" aria-selected="false">Números</button>
+    <button class="pestana" data-pestana="convocatoria" aria-selected="false">Convocatoria y autores</button>
+    <button class="pestana" data-pestana="portada" aria-selected="false">Portada y avisos</button>
+    <button class="pestana" data-pestana="comite" aria-selected="false">Comité editorial</button>
+    <button class="pestana" data-pestana="formacion" aria-selected="false">Formación</button>
+  </nav>
+
+  <!-- Artículos -->
+  <div data-panel="articulos">
+    <div class="caja">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">Artículos</h2><button class="boton b-accion" type="button" id="btn-nuevo-art">+ Nuevo artículo</button></div>
+      <p class="ayuda">Cada artículo tiene su página propia con el PDF, la cita y las etiquetas para Google Académico, que se generan solas.</p>
+      <div id="lista-arts" style="margin-top:12px"></div>
+    </div>
+  </div>
+
+  <div data-panel="editor-art" class="oculto">
+    <div class="caja">
+      <h2 id="titulo-editor-art">Nuevo artículo</h2>
+      <label for="a-titulo">Título del artículo</label><input type="text" id="a-titulo">
+      <div class="fila">
+        <div><label for="a-tipo">Tipo de artículo</label><input type="text" id="a-tipo" list="tipos-art"><datalist id="tipos-art"><option value="Artículo original"><option value="Artículo de revisión"><option value="Reporte de caso"><option value="Educación médica"><option value="Carta al editor"><option value="Editorial"></datalist></div>
+        <div><label for="a-numero">¿En qué número?</label><select id="a-numero"></select></div>
+        <div><label for="a-anio">Año</label><input type="number" id="a-anio" min="1950" max="2100"></div>
+      </div>
+      <label>Autores</label>
+      <p class="ayuda">Uno por renglón. «Cómo aparece en la cita» se llena solo (Apellidos, Nombre); corríjalo si hace falta.</p>
+      <div id="a-autores"></div>
+      <button class="boton b-chico" type="button" id="btn-mas-autor">+ Agregar autor</button>
+      <div class="fila">
+        <div><label for="a-pini">Página inicial</label><input type="number" id="a-pini" min="1"></div>
+        <div><label for="a-pfin">Página final</label><input type="number" id="a-pfin" min="1"></div>
+        <div><label for="a-paginas">Número de páginas</label><input type="number" id="a-paginas" min="1"></div>
+        <div><label for="a-refs">Número de referencias</label><input type="number" id="a-refs" min="0"></div>
+      </div>
+      <label for="a-resumen">Resumen</label><textarea id="a-resumen" class="alto"></textarea>
+      <label for="a-claves">Palabras clave</label><input type="text" id="a-claves" placeholder="Separadas por punto y coma (;)">
+      <details style="margin-top:14px"><summary>Resumen en inglés (abstract) — recomendado para Latindex</summary>
+        <label for="a-abstract">Abstract</label><textarea id="a-abstract"></textarea>
+        <label for="a-keywords">Keywords</label><input type="text" id="a-keywords">
+      </details>
+      <label for="a-pdf">Archivo PDF del artículo</label>
+      <input type="file" id="a-pdf" accept="application/pdf">
+      <div class="pdf-estado" id="a-pdf-estado"></div>
+      <label class="check"><input type="checkbox" id="a-diplomado"> Mostrar en la página del artículo la caja del Diplomado (temas de neurodesarrollo)</label>
+      <div class="botones">
+        <button class="boton b-principal" type="button" id="btn-publicar-art">Publicar</button>
+        <button class="boton" type="button" id="btn-vista-art">Vista previa</button>
+        <button class="boton" type="button" id="btn-cancelar-art">Cancelar</button>
+      </div>
+      <div id="aviso-editor"></div>
+    </div>
+  </div>
+
+  <!-- Números -->
+  <div data-panel="numeros" class="oculto">
+    <div class="caja">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">Números de la revista</h2><button class="boton b-accion" type="button" id="btn-nuevo-num">+ Nuevo número</button></div>
+      <p class="ayuda">El <b>número actual</b> es el que aparece primero en la portada. Los demás pasan solos al Archivo.</p>
+      <div id="lista-nums" style="margin-top:12px"></div>
+    </div>
+    <div class="caja oculto" id="editor-num">
+      <h3 id="titulo-editor-num">Nuevo número</h3>
+      <div class="fila">
+        <div><label for="n-vol">Volumen</label><input type="number" id="n-vol" min="1"></div>
+        <div><label for="n-num">Número</label><input type="number" id="n-num" min="1"></div>
+        <div><label for="n-anio">Año</label><input type="number" id="n-anio" min="1950" max="2100"></div>
+      </div>
+      <label for="n-periodo">Periodo</label><input type="text" id="n-periodo" placeholder="Ej.: Noviembre–diciembre de 2026">
+      <label for="n-tema">Tema central</label><input type="text" id="n-tema" placeholder="Ej.: epidemiología, infectología y salud pública">
+      <label class="check"><input type="checkbox" id="n-actual"> Que sea el número actual (el que aparece primero en la portada)</label>
+      <p class="ayuda">El título se arma solo: «Nueva época · Vol. 1, Núm. 2 (2026)».</p>
+      <div class="botones"><button class="boton b-principal" type="button" id="btn-guardar-num">Publicar</button><button class="boton" type="button" id="btn-cancelar-num">Cancelar</button></div>
+      <div id="aviso-num"></div>
+    </div>
+  </div>
+
+  <!-- Convocatoria y autores -->
+  <div data-panel="convocatoria" class="oculto">
+    <div class="caja">
+      <h2>Convocatoria</h2>
+      <label class="check"><input type="checkbox" data-campo="convocatoria.mostrar"> Mostrar la convocatoria en la web</label>
+      <label>Etiqueta corta (aparece en la portada)</label><input type="text" data-campo="convocatoria.etiqueta" placeholder="Convocatoria abierta · Núm. 3">
+      <label>Título</label><input type="text" data-campo="convocatoria.titulo" placeholder="Número 3 · Enero de 2027">
+      <label>Texto de la convocatoria</label><textarea data-campo="convocatoria.texto"></textarea>
+      <p class="ayuda">Formato: **texto** = negrita; línea en blanco = nuevo párrafo.</p>
+      <div class="fila">
+        <div><label>Fecha límite para enviar</label><input type="date" data-campo="convocatoria.fechaLimite"></div>
+        <div><label>Fecha prevista de publicación</label><input type="date" data-campo="convocatoria.fechaPublicacion"></div>
+      </div>
+      <label>Notas adicionales (una por renglón)</label><textarea data-campo="convocatoria.notas" data-tipo="lineas"></textarea>
+      <label>Asunto del correo al enviar manuscrito</label><input type="text" data-campo="convocatoria.asuntoCorreo">
+    </div>
+    <div class="caja">
+      <h2>Información para autores</h2>
+      <label>Tipos de artículo (uno por renglón)</label><textarea data-campo="autores.tipos" data-tipo="lineas"></textarea>
+      <label>Proceso editorial (un paso por renglón)</label><textarea data-campo="autores.proceso" data-tipo="lineas"></textarea>
+      <label>Requisitos del manuscrito (uno por renglón)</label><textarea data-campo="autores.requisitos" data-tipo="lineas"></textarea>
+      <label>Ética y licencia</label><textarea data-campo="autores.etica"></textarea>
+      <div class="botones"><button class="boton b-principal" type="button" data-guardar="convocatoria">Publicar cambios</button></div>
+      <div id="aviso-convocatoria"></div>
+    </div>
+  </div>
+
+  <!-- Portada y avisos -->
+  <div data-panel="portada" class="oculto">
+    <div class="caja">
+      <h2>Avisos en la portada</h2>
+      <p class="ayuda">Mensajes cortos que salen arriba de la portada (por ejemplo: «Ya está publicado el Número 2»). Déjelos vacíos o quítelos cuando ya no sirvan.</p>
+      <div id="p-avisos"></div>
+      <button class="boton b-chico" type="button" id="btn-mas-aviso">+ Agregar aviso</button>
+    </div>
+    <div class="caja">
+      <h2>Editorial</h2>
+      <label class="check"><input type="checkbox" data-campo="editorial.mostrar"> Mostrar el editorial en la portada</label>
+      <label>Título</label><input type="text" data-campo="editorial.titulo">
+      <label>Texto</label><textarea class="alto" data-campo="editorial.texto"></textarea>
+      <label>Firma</label><input type="text" data-campo="editorial.firma">
+    </div>
+    <div class="caja">
+      <h2>Datos generales</h2>
+      <label>Descripción de la revista (debajo del nombre)</label><textarea data-campo="descripcion"></textarea>
+      <label>Etiqueta de la época</label><input type="text" data-campo="etiquetaEpoca">
+      <label>Correo editorial</label><input type="email" data-campo="contacto.correo">
+      <label>Ciudad</label><input type="text" data-campo="ciudad">
+      <div class="botones"><button class="boton b-principal" type="button" data-guardar="portada">Publicar cambios</button></div>
+      <div id="aviso-portada"></div>
+    </div>
+  </div>
+
+  <!-- Comité -->
+  <div data-panel="comite" class="oculto">
+    <div class="caja">
+      <h2>Comité editorial</h2>
+      <h3>Editor jefe</h3>
+      <label>Nombre</label><input type="text" data-campo="comite.editorJefe.nombre">
+      <label>Formación y vinculación</label><input type="text" data-campo="comite.editorJefe.detalle">
+      <h3 style="margin-top:20px">Miembros del comité</h3>
+      <div id="c-miembros"></div>
+      <button class="boton b-chico" type="button" id="btn-mas-miembro">+ Agregar miembro</button>
+      <label>Texto del comité científico (déjelo vacío cuando ya haya miembros)</label><textarea data-campo="comite.textoCientifico"></textarea>
+      <h3 style="margin-top:20px">Asesoría científica</h3>
+      <label>Nombre</label><input type="text" data-campo="comite.asesoria.nombre">
+      <label>Detalle</label><input type="text" data-campo="comite.asesoria.detalle">
+      <div class="botones"><button class="boton b-principal" type="button" data-guardar="comite">Publicar cambios</button></div>
+      <div id="aviso-comite"></div>
+    </div>
+  </div>
+
+  <!-- Formación -->
+  <div data-panel="formacion" class="oculto">
+    <div class="caja">
+      <h2>Cursos de actualización (POLIANDES)</h2>
+      <label class="check"><input type="checkbox" data-campo="formacion.cursos.mostrar"> Mostrar los cursos</label>
+      <label>Etiqueta</label><input type="text" data-campo="formacion.cursos.etiqueta">
+      <label>Título</label><input type="text" data-campo="formacion.cursos.titulo">
+      <label>Texto</label><textarea data-campo="formacion.cursos.texto"></textarea>
+      <label>Grupos de cursos</label>
+      <div id="f-grupos"></div>
+      <button class="boton b-chico" type="button" id="btn-mas-grupo">+ Agregar grupo</button>
+      <label>Texto de la Membresía Gold</label><textarea data-campo="formacion.cursos.textoGold"></textarea>
+      <label>Enlace del botón</label><input type="url" data-campo="formacion.cursos.enlace">
+      <p class="ayuda">Debe terminar en <b>?ref=revista</b> para que POLIANDES salude al médico que llega desde la revista.</p>
+      <label>Texto del botón</label><input type="text" data-campo="formacion.cursos.textoBoton">
+    </div>
+    <div class="caja">
+      <h2>Diplomado</h2>
+      <label class="check"><input type="checkbox" data-campo="formacion.diplomado.mostrar"> Mostrar el diplomado</label>
+      <label>Título</label><input type="text" data-campo="formacion.diplomado.titulo">
+      <label>Texto</label><textarea data-campo="formacion.diplomado.texto"></textarea>
+      <label>Enlace del botón</label><input type="url" data-campo="formacion.diplomado.enlace">
+      <label>Texto del botón</label><input type="text" data-campo="formacion.diplomado.textoBoton">
+      <label class="check"><input type="checkbox" data-campo="formacion.diplomado.esWhatsapp"> El botón es de WhatsApp (color verde)</label>
+      <div class="botones"><button class="boton b-principal" type="button" data-guardar="formacion">Publicar cambios</button></div>
+      <div id="aviso-formacion"></div>
+    </div>
+  </div>
+</section>
+<p class="pie">Panel desarrollado por SkyNet Genesis · contacto@skynetgenesis.com · WhatsApp 304 437 5758</p>
+</main>
+<div id="cargando" class="oculto"><div id="cargando-texto">Cargando…</div></div>
+
+<script src="/assets/js/formato.js"></script>
+<script>
+/* ===== Configuración de esta web (cambiar solo esto al copiar el panel a otra web) ===== */
+var CONFIG = {
+  dueno: 'rl-rikardolondono',
+  repo: 'revista-colombiana-de-medicina',
+  rama: 'main',
+  sitio: 'revistacolombianademedicina.com',
+  claveLocal: 'panel-revista-llave'
+};
+/* ======================================================================================= */
+var F = window.Formato;
+var API = 'https://api.github.com/repos/' + CONFIG.dueno + '/' + CONFIG.repo;
+var estado = { llave: '', sitio: null, numeros: null, arts: null, commitBase: '', cambiosSinGuardar: false };
+var nuevosArchivos = {}; // ruta -> dataURL pendiente de subir
+var borrarRutas = [];
+
+function $(id) { return document.getElementById(id); }
+function aviso(id, tipo, txt) { var el = $(id); el.innerHTML = ''; if (!txt) return; var d = document.createElement('div'); d.className = 'aviso ' + tipo; d.textContent = txt; el.appendChild(d); if (tipo !== 'info') d.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+function cargando(on, txt) { $('cargando').classList.toggle('oculto', !on); $('cargando-texto').textContent = txt || 'Cargando…'; }
+function leerLS(k) { try { return localStorage.getItem(k) || sessionStorage.getItem(k) || ''; } catch (e) { return ''; } }
+function guardarLS(k, v, recordar) { try { (recordar ? localStorage : sessionStorage).setItem(k, v); } catch (e) {} }
+function borrarLS(k) { try { localStorage.removeItem(k); sessionStorage.removeItem(k); } catch (e) {} }
+function clonar(o) { return JSON.parse(JSON.stringify(o)); }
+function boton(txt, clases, fn) { var b = document.createElement('button'); b.type = 'button'; b.className = 'boton ' + clases; b.textContent = txt; b.onclick = fn; return b; }
+function marcarCambio() { estado.cambiosSinGuardar = true; }
+
+$('nombre-sitio').textContent = CONFIG.sitio;
+$('nombre-repo').textContent = CONFIG.repo; $('nombre-repo2').textContent = CONFIG.repo;
+$('nombre-llave').textContent = 'Panel ' + CONFIG.sitio;
+
+/* ---------- GitHub ---------- */
+function gh(ruta, op) {
+  op = op || {};
+  var h = { 'Authorization': 'Bearer ' + estado.llave, 'Accept': op.accept || 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
+  if (op.body) h['Content-Type'] = 'application/json';
+  return fetch(ruta.indexOf('http') === 0 ? ruta : API + ruta, { method: op.method || 'GET', headers: h, body: op.body ? JSON.stringify(op.body) : undefined, cache: 'no-store' })
+    .then(function (r) {
+      if (op.accept === 'application/vnd.github.raw') return r.ok ? r.text() : r.text().then(function (t) { throw errorGH(r.status, t); });
+      return r.text().then(function (t) { var j = t ? JSON.parse(t) : {}; if (!r.ok) throw errorGH(r.status, j.message || t); return j; });
+    }, function () { throw errorGH(0, ''); });
+}
+function errorGH(st, msg) {
+  var e = new Error(msg); e.status = st;
+  if (st === 401) e.message = 'La contraseña no es válida o ya venció. Cree una nueva en GitHub y vuelva a entrar.';
+  else if (st === 403) e.message = 'La contraseña no tiene permiso para escribir en esta web. Revise que tenga «Contents: Read and write» sobre ' + CONFIG.repo + '.';
+  else if (st === 404) e.message = 'No se encontró la web ' + CONFIG.repo + ' con esta contraseña. Revise que la contraseña tenga acceso a ese repositorio.';
+  else if (st === 422) e.message = 'GitHub rechazó el cambio (' + msg + '). Si subió un PDF muy grande, redúzcalo a menos de 20 MB.';
+  else if (!st) e.message = 'No hay conexión a internet. Intente de nuevo.';
+  return e;
+}
+function leerArchivo(ruta) { return gh('/contents/' + ruta + '?ref=' + CONFIG.rama, { accept: 'application/vnd.github.raw' }); }
+function refActual() { return gh('/git/ref/heads/' + CONFIG.rama).then(function (r) { return r.object.sha; }); }
+
+// Sube en UN solo cambio: textos, archivos nuevos (PDF) y archivos a borrar.
+function confirmarCambios(textos, archivos, borrar, mensaje) {
+  var base, arbolBase;
+  return refActual().then(function (sha) {
+    if (estado.commitBase && sha !== estado.commitBase) {
+      var e = new Error('La web fue modificada desde otro lugar mientras usted trabajaba. Pulse «Recargar» para traer la versión más reciente (copie antes su texto si no quiere perderlo).');
+      e.recargar = true; throw e;
+    }
+    base = sha; return gh('/git/commits/' + sha);
+  }).then(function (c) {
+    arbolBase = c.tree.sha;
+    var rutas = Object.keys(archivos);
+    return rutas.reduce(function (p, ruta, i) {
+      return p.then(function (acc) {
+        cargando(true, 'Subiendo archivo ' + (i + 1) + ' de ' + rutas.length + '…');
+        return gh('/git/blobs', { method: 'POST', body: { content: archivos[ruta].split(',')[1], encoding: 'base64' } })
+          .then(function (b) { acc.push({ path: ruta.replace(/^\//, ''), mode: '100644', type: 'blob', sha: b.sha }); return acc; });
+      });
+    }, Promise.resolve([]));
+  }).then(function (arbol) {
+    cargando(true, 'Publicando…');
+    Object.keys(textos).forEach(function (ruta) { arbol.push({ path: ruta, mode: '100644', type: 'blob', content: textos[ruta] }); });
+    borrar.forEach(function (ruta) { arbol.push({ path: ruta.replace(/^\//, ''), mode: '100644', type: 'blob', sha: null }); });
+    return gh('/git/trees', { method: 'POST', body: { base_tree: arbolBase, tree: arbol } });
+  }).then(function (t) {
+    return gh('/git/commits', { method: 'POST', body: { message: mensaje + '\n\nPublicado desde el panel /admin', tree: t.sha, parents: [base] } });
+  }).then(function (c) {
+    return gh('/git/refs/heads/' + CONFIG.rama, { method: 'PATCH', body: { sha: c.sha } }).then(function () { estado.commitBase = c.sha; return c; });
+  });
+}
+
+function candidato() { return { sitio: clonar(estado.sitio), numeros: clonar(estado.numeros), arts: clonar(estado.arts) }; }
+function usada(ruta, d) { d = d || estado; return JSON.stringify(d.arts).indexOf('"' + ruta + '"') >= 0; }
+
+// Regenera todas las páginas con «cand» y publica. Solo si sale bien, «cand» pasa a ser el estado.
+function publicar(cand, mensaje, avisoId, alTerminar) {
+  cargando(true, 'Preparando…');
+  var artsDatos = { articulos: F.ordenarArticulos(cand.arts) };
+  var paginas;
+  try { paginas = F.generarTodo(cand.sitio, cand.numeros, artsDatos); }
+  catch (e) { cargando(false); aviso(avisoId, 'error', 'No se pudo armar la web: ' + e.message); return Promise.resolve(false); }
+  paginas['datos/sitio.json'] = JSON.stringify(cand.sitio, null, 1) + '\n';
+  paginas['datos/numeros.json'] = JSON.stringify(cand.numeros, null, 1) + '\n';
+  paginas['datos/articulos.json'] = JSON.stringify(artsDatos, null, 1) + '\n';
+  var archivos = {}; Object.keys(nuevosArchivos).forEach(function (r) { if (usada(r, cand)) archivos[r] = nuevosArchivos[r]; });
+  var borrar = borrarRutas.filter(function (r) { return !usada(r, cand) && !archivos[r] && !paginas[r.replace(/^\//, '')]; });
+  return confirmarCambios(paginas, archivos, borrar, mensaje).then(function () {
+    estado.sitio = cand.sitio; estado.numeros = cand.numeros; estado.arts = cand.arts;
+    nuevosArchivos = {}; borrarRutas = []; estado.cambiosSinGuardar = false;
+    cargando(false); if (alTerminar) alTerminar();
+    aviso('aviso-panel', 'ok', '✔ Publicado. La web se actualiza en 1 o 2 minutos (si no ve el cambio, recargue la página de la web).');
+    return true;
+  }).catch(function (e) {
+    cargando(false);
+    aviso(avisoId, 'error', 'No se pudo publicar: ' + e.message);
+    if (e.recargar) { var b = boton('Recargar', 'b-principal b-chico', function () { estado.cambiosSinGuardar = false; location.reload(); }); b.style.marginTop = '8px'; $(avisoId).appendChild(b); }
+    return false;
+  });
+}
+
+/* ---------- Ingreso ---------- */
+function entrar(llave, recordar) {
+  estado.llave = String(llave || '').trim();
+  if (!/^(github_pat_|ghp_)/.test(estado.llave)) { aviso('aviso-ingreso', 'error', 'Eso no parece una contraseña del panel. Debe empezar por «github_pat_».'); return; }
+  cargando(true, 'Entrando…');
+  gh('').then(function (repo) {
+    if (repo.permissions && !repo.permissions.push) throw errorGH(403);
+    return Promise.all([refActual(), leerArchivo('datos/sitio.json'), leerArchivo('datos/numeros.json'), leerArchivo('datos/articulos.json')]);
+  }).then(function (r) {
+    estado.commitBase = r[0];
+    estado.sitio = JSON.parse(r[1]); estado.numeros = JSON.parse(r[2]); estado.arts = JSON.parse(r[3]).articulos || [];
+    if (!estado.numeros.numeros) estado.numeros.numeros = [];
+    guardarLS(CONFIG.claveLocal, estado.llave, recordar);
+    $('vista-ingreso').classList.add('oculto'); $('vista-panel').classList.remove('oculto'); $('acciones-barra').classList.remove('oculto');
+    cargando(false); pintarTodo();
+  }).catch(function (e) {
+    cargando(false); estado.llave = '';
+    if (e.status === 401) borrarLS(CONFIG.claveLocal);
+    $('vista-ingreso').classList.remove('oculto');
+    aviso('aviso-ingreso', 'error', e.message);
+  });
+}
+$('btn-entrar').onclick = function () { entrar($('llave').value, $('recordar').checked); };
+$('llave').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('btn-entrar').click(); });
+$('btn-salir').onclick = function () {
+  if (estado.cambiosSinGuardar && !confirm('Tiene cambios sin publicar. ¿Salir de todos modos?')) return;
+  borrarLS(CONFIG.claveLocal); estado.cambiosSinGuardar = false; location.reload();
+};
+window.addEventListener('beforeunload', function (e) { if (estado.cambiosSinGuardar) { e.preventDefault(); e.returnValue = ''; } });
+(function () { var g = leerLS(CONFIG.claveLocal); if (g) entrar(g, true); })();
+
+function pintarTodo() { pintarArts(); pintarNums(); cargarFormularios(); }
+
+/* ---------- Pestañas ---------- */
+function verPanel(nombre) {
+  document.querySelectorAll('[data-panel]').forEach(function (p) { p.classList.toggle('oculto', p.getAttribute('data-panel') !== nombre); });
+  var pest = nombre === 'editor-art' ? 'articulos' : nombre;
+  document.querySelectorAll('.pestana').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-pestana') === pest ? 'true' : 'false'); });
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll('.pestana').forEach(function (b) {
+  b.onclick = function () {
+    if (estado.cambiosSinGuardar && !confirm('Tiene cambios sin publicar. ¿Cambiar de sección y descartarlos?')) return;
+    if (estado.cambiosSinGuardar) { estado.cambiosSinGuardar = false; nuevosArchivos = {}; borrarRutas = []; pintarTodo(); $('editor-num').classList.add('oculto'); }
+    aviso('aviso-panel', '', ''); verPanel(b.getAttribute('data-pestana'));
+  };
+});
+
+/* ---------- Formularios simples (data-campo) ---------- */
+function leerRuta(o, ruta) { return ruta.split('.').reduce(function (a, k) { return a == null ? undefined : a[k]; }, o); }
+function ponerRuta(o, ruta, v) { var p = ruta.split('.'), u = p.pop(); var d = p.reduce(function (a, k) { if (a[k] == null || typeof a[k] !== 'object') a[k] = {}; return a[k]; }, o); d[u] = v; }
+function cargarFormularios() {
+  document.querySelectorAll('[data-campo]').forEach(function (el) {
+    var v = leerRuta(estado.sitio, el.getAttribute('data-campo'));
+    if (el.type === 'checkbox') el.checked = !!v;
+    else if (el.getAttribute('data-tipo') === 'lineas') el.value = (v || []).join('\n');
+    else el.value = v == null ? '' : v;
+  });
+  pintarAvisos(estado.sitio.avisos || []);
+  pintarMiembros((estado.sitio.comite && estado.sitio.comite.miembros) || []);
+  pintarGrupos((estado.sitio.formacion && estado.sitio.formacion.cursos && estado.sitio.formacion.cursos.grupos) || []);
+}
+document.querySelectorAll('[data-campo]').forEach(function (el) { el.addEventListener('input', marcarCambio); el.addEventListener('change', marcarCambio); });
+function leerFormularioPanel(panel, s) {
+  document.querySelectorAll('[data-panel="' + panel + '"] [data-campo]').forEach(function (el) {
+    var v;
+    if (el.type === 'checkbox') v = el.checked;
+    else if (el.getAttribute('data-tipo') === 'lineas') v = el.value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean);
+    else v = el.value.replace(/\r/g, '').trim();
+    ponerRuta(s, el.getAttribute('data-campo'), v);
+  });
+}
+
+// Renglones repetibles (avisos, miembros, grupos)
+function renglones(contId, lista, campos, alQuitar) {
+  var cont = $(contId); cont.innerHTML = '';
+  lista.forEach(function (it, i) {
+    var d = document.createElement('div'); d.className = 'renglon';
+    d.appendChild(Object.assign(boton('Quitar', 'b-peligro b-chico quitar', function () { lista.splice(i, 1); marcarCambio(); alQuitar(lista); }), {}));
+    campos.forEach(function (c) {
+      var l = document.createElement('label'); l.textContent = c[1];
+      var inp = c[2] === 'area' ? document.createElement('textarea') : document.createElement('input');
+      if (c[2] !== 'area') inp.type = c[2] || 'text';
+      var v = it[c[0]]; inp.value = Array.isArray(v) ? v.join('\n') : (v || '');
+      if (c[3]) inp.placeholder = c[3];
+      inp.addEventListener('input', function () { it[c[0]] = c[2] === 'area' ? inp.value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean) : inp.value.trim(); marcarCambio(); });
+      d.appendChild(l); d.appendChild(inp);
+    });
+    cont.appendChild(d);
+  });
+}
+var avisosEdit = [], miembrosEdit = [], gruposEdit = [];
+function pintarAvisos(l) { avisosEdit = l === avisosEdit ? l : clonar(l); renglones('p-avisos', avisosEdit, [['texto', 'Texto del aviso'], ['enlace', 'Enlace (opcional)', 'url', 'https://…'], ['textoEnlace', 'Texto del enlace (opcional)', 'text', 'Ver más']], pintarAvisos); }
+function pintarMiembros(l) { miembrosEdit = l === miembrosEdit ? l : clonar(l); renglones('c-miembros', miembrosEdit, [['cargo', 'Cargo', 'text', 'Ej.: Comité científico / Par evaluador'], ['nombre', 'Nombre y títulos'], ['detalle', 'Formación y vinculación']], pintarMiembros); }
+function pintarGrupos(l) { gruposEdit = l === gruposEdit ? l : clonar(l); renglones('f-grupos', gruposEdit, [['titulo', 'Nombre del grupo'], ['items', 'Cursos (uno por renglón)', 'area']], pintarGrupos); }
+$('btn-mas-aviso').onclick = function () { avisosEdit.push({ texto: '', enlace: '', textoEnlace: '' }); marcarCambio(); pintarAvisos(avisosEdit); };
+$('btn-mas-miembro').onclick = function () { miembrosEdit.push({ cargo: 'Comité científico', nombre: '', detalle: '' }); marcarCambio(); pintarMiembros(miembrosEdit); };
+$('btn-mas-grupo').onclick = function () { gruposEdit.push({ titulo: '', items: [] }); marcarCambio(); pintarGrupos(gruposEdit); };
+
+document.querySelectorAll('[data-guardar]').forEach(function (b) {
+  b.onclick = function () {
+    var panel = b.getAttribute('data-guardar'), avisoId = 'aviso-' + panel;
+    var cand = candidato();
+    leerFormularioPanel(panel, cand.sitio);
+    if (panel === 'portada') {
+      cand.sitio.avisos = avisosEdit.filter(function (x) { return x.texto; });
+      if (cand.sitio.avisos.some(function (x) { return x.enlace && !/^(https?:\/\/|\/)/.test(x.enlace); })) { aviso(avisoId, 'error', 'Los enlaces de los avisos deben empezar por https://'); return; }
+      if (!cand.sitio.contacto.correo || !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(cand.sitio.contacto.correo)) { aviso(avisoId, 'error', 'Revise el correo editorial.'); return; }
+    }
+    if (panel === 'comite') cand.sitio.comite.miembros = miembrosEdit.filter(function (x) { return x.nombre; });
+    if (panel === 'formacion') {
+      cand.sitio.formacion.cursos.grupos = gruposEdit.filter(function (x) { return x.titulo || (x.items || []).length; });
+      var en = cand.sitio.formacion.cursos.enlace || '';
+      if (en && !/^https?:\/\//.test(en)) { aviso(avisoId, 'error', 'El enlace de los cursos debe empezar por https://'); return; }
+      if (/poliandes\.com/.test(en) && !/[?&]ref=revista/.test(en) && !confirm('El enlace de POLIANDES no termina en ?ref=revista, así que POLIANDES no sabrá que el médico viene de la revista. ¿Publicar de todos modos?')) return;
+      var de = cand.sitio.formacion.diplomado.enlace || '';
+      if (de && !/^https?:\/\//.test(de)) { aviso(avisoId, 'error', 'El enlace del diplomado debe empezar por https://'); return; }
+    }
+    if (panel === 'convocatoria' && cand.sitio.convocatoria.mostrar && !cand.sitio.convocatoria.titulo) { aviso(avisoId, 'error', 'Escriba el título de la convocatoria o desmarque «Mostrar».'); return; }
+    var nombres = { convocatoria: 'convocatoria y autores', portada: 'portada y avisos', comite: 'comité editorial', formacion: 'formación' };
+    publicar(cand, 'Actualización de ' + nombres[panel], avisoId, cargarFormularios);
+  };
+});
+
+/* ---------- Números ---------- */
+var numEdit = null;
+function tituloNumero(n) { return 'Nueva época · Vol. ' + n.volumen + ', Núm. ' + n.numero + ' (' + n.anio + ')'; }
+function pintarNums() {
+  var cont = $('lista-nums'); cont.innerHTML = '';
+  var lista = F.ordenarNumeros(estado.numeros);
+  if (!lista.length) cont.innerHTML = '<div class="caja">Aún no hay números.</div>';
+  lista.forEach(function (n) {
+    var cuantos = estado.arts.filter(function (a) { return a.numero === n.id; }).length;
+    var d = document.createElement('div'); d.className = 'item';
+    var t = document.createElement('div'); t.className = 'item__txt';
+    var b = document.createElement('b'); b.textContent = n.titulo + (estado.sitio.numeroActual === n.id ? '  ★ Número actual' : '');
+    var s = document.createElement('span'); s.textContent = [n.periodo, n.tema, cuantos + ' artículo(s)'].filter(Boolean).join(' · ');
+    t.appendChild(b); t.appendChild(s);
+    var acc = document.createElement('div'); acc.className = 'item__btn';
+    if (estado.sitio.numeroActual !== n.id) acc.appendChild(boton('Hacer actual', 'b-accion b-chico', function () { hacerActual(n); }));
+    acc.appendChild(boton('Editar', 'b-principal b-chico', function () { abrirNum(n); }));
+    acc.appendChild(boton('Eliminar', 'b-peligro b-chico', function () { eliminarNum(n, cuantos); }));
+    d.appendChild(t); d.appendChild(acc); cont.appendChild(d);
+  });
+  // selector de números en el editor de artículos
+  $('a-numero').innerHTML = '<option value="">Archivo (etapas anteriores, sin número)</option>' + lista.map(function (n) { return '<option value="' + F.esc(n.id) + '">' + F.esc(n.titulo) + '</option>'; }).join('');
+}
+$('btn-nuevo-num').onclick = function () {
+  var l = F.ordenarNumeros(estado.numeros), u = l[0];
+  abrirNum(null, u ? { volumen: u.volumen, numero: u.numero + 1, anio: new Date().getFullYear() } : { volumen: 1, numero: 1, anio: new Date().getFullYear() });
+};
+function abrirNum(n, base) {
+  numEdit = n ? clonar(n) : Object.assign({ id: '', periodo: '', tema: '' }, base);
+  $('titulo-editor-num').textContent = n ? 'Editar número' : 'Nuevo número';
+  $('n-vol').value = numEdit.volumen; $('n-num').value = numEdit.numero; $('n-anio').value = numEdit.anio;
+  $('n-periodo').value = numEdit.periodo || ''; $('n-tema').value = numEdit.tema || '';
+  $('n-actual').checked = n ? estado.sitio.numeroActual === n.id : true;
+  aviso('aviso-num', '', ''); $('editor-num').classList.remove('oculto'); $('editor-num').scrollIntoView({ behavior: 'smooth' });
+}
+['n-vol', 'n-num', 'n-anio', 'n-periodo', 'n-tema', 'n-actual'].forEach(function (id) { $(id).addEventListener('input', marcarCambio); });
+$('btn-cancelar-num').onclick = function () { estado.cambiosSinGuardar = false; $('editor-num').classList.add('oculto'); };
+$('btn-guardar-num').onclick = function () {
+  var n = clonar(numEdit);
+  n.volumen = parseInt($('n-vol').value, 10); n.numero = parseInt($('n-num').value, 10); n.anio = parseInt($('n-anio').value, 10);
+  n.periodo = $('n-periodo').value.trim(); n.tema = $('n-tema').value.trim();
+  if (!(n.volumen > 0 && n.numero > 0 && n.anio > 1900)) { aviso('aviso-num', 'error', 'Revise volumen, número y año.'); return; }
+  n.titulo = tituloNumero(n);
+  var cand = candidato(), L = cand.numeros.numeros;
+  var idNuevo = 'v' + n.volumen + 'n' + n.numero;
+  if (L.some(function (x) { return x.id === idNuevo && x.id !== n.id; })) { aviso('aviso-num', 'error', 'Ya existe el Vol. ' + n.volumen + ', Núm. ' + n.numero + '.'); return; }
+  if (n.id && n.id !== idNuevo) { cand.arts.forEach(function (a) { if (a.numero === n.id) a.numero = idNuevo; }); if (cand.sitio.numeroActual === n.id) cand.sitio.numeroActual = idNuevo; }
+  var viejo = n.id; n.id = idNuevo;
+  if (!n.fecha) n.fecha = new Date().toISOString().slice(0, 10);
+  var i = L.findIndex(function (x) { return x.id === viejo; }); if (viejo && i >= 0) L[i] = n; else L.push(n);
+  if ($('n-actual').checked) cand.sitio.numeroActual = n.id;
+  publicar(cand, (viejo ? 'Edición del ' : 'Nuevo ') + n.titulo, 'aviso-num', function () { $('editor-num').classList.add('oculto'); pintarNums(); pintarArts(); });
+};
+function hacerActual(n) {
+  if (!confirm('¿Poner «' + n.titulo + '» como número actual? El número actual anterior pasará al Archivo.')) return;
+  var cand = candidato(); cand.sitio.numeroActual = n.id;
+  publicar(cand, 'Número actual: ' + n.titulo, 'aviso-panel', pintarNums);
+}
+function eliminarNum(n, cuantos) {
+  if (cuantos) { aviso('aviso-panel', 'error', 'Ese número tiene ' + cuantos + ' artículo(s). Muévalos a otro número o elimínelos primero.'); return; }
+  if (!confirm('¿Eliminar «' + n.titulo + '»?')) return;
+  var cand = candidato(); cand.numeros.numeros = cand.numeros.numeros.filter(function (x) { return x.id !== n.id; });
+  if (cand.sitio.numeroActual === n.id) { var o = F.ordenarNumeros(cand.numeros)[0]; cand.sitio.numeroActual = o ? o.id : ''; }
+  publicar(cand, 'Eliminado: ' + n.titulo, 'aviso-panel', pintarNums);
+}
+
+/* ---------- Artículos ---------- */
+var artEdit = null, esNuevo = false;
+function pintarArts() {
+  var cont = $('lista-arts'); cont.innerHTML = '';
+  var grupos = F.ordenarNumeros(estado.numeros).map(function (n) { return { t: n.titulo + (estado.sitio.numeroActual === n.id ? ' ★' : ''), l: F.articulosDe(estado.arts, n.id) }; });
+  grupos.push({ t: 'Archivo (etapas anteriores)', l: F.articulosDe(estado.arts, '') });
+  var hay = false;
+  grupos.forEach(function (g) {
+    if (!g.l.length) return; hay = true;
+    var h = document.createElement('h3'); h.textContent = g.t + ' (' + g.l.length + ')'; h.style.marginTop = '14px'; cont.appendChild(h);
+    g.l.forEach(function (a) {
+      var d = document.createElement('div'); d.className = 'item';
+      var t = document.createElement('div'); t.className = 'item__txt';
+      var b = document.createElement('b'); b.textContent = a.titulo;
+      var s = document.createElement('span'); s.textContent = [a.tipo, (a.autores || []).map(function (x) { return x.nombre; }).join(', '), a.anio, a.pdf ? 'PDF ✔' : 'sin PDF'].filter(Boolean).join(' · ');
+      t.appendChild(b); t.appendChild(s);
+      var acc = document.createElement('div'); acc.className = 'item__btn';
+      acc.appendChild(boton('Ver', 'b-chico', function () { window.open('/articulo/' + a.slug + '.html', '_blank'); }));
+      acc.appendChild(boton('Editar', 'b-principal b-chico', function () { abrirArt(a); }));
+      acc.appendChild(boton('Eliminar', 'b-peligro b-chico', function () { eliminarArt(a); }));
+      d.appendChild(t); d.appendChild(acc); cont.appendChild(d);
+    });
+  });
+  if (!hay) cont.innerHTML = '<div class="caja">Aún no hay artículos.</div>';
+}
+function citacionDe(nombre) {
+  var p = String(nombre || '').replace(/,/g, ' ').trim().split(/\s+/).filter(Boolean);
+  if (p.length < 2) return p.join(' ');
+  var nAp = p.length >= 3 ? 2 : 1;
+  return p.slice(p.length - nAp).join(' ') + ', ' + p.slice(0, p.length - nAp).join(' ');
+}
+function pintarAutores() {
+  var cont = $('a-autores'); cont.innerHTML = '';
+  artEdit.autores.forEach(function (x, i) {
+    var d = document.createElement('div'); d.className = 'renglon';
+    if (artEdit.autores.length > 1) d.appendChild(boton('Quitar', 'b-peligro b-chico quitar', function () { artEdit.autores.splice(i, 1); marcarCambio(); pintarAutores(); }));
+    var campos = [['nombre', 'Nombre completo'], ['citacion', 'Cómo aparece en la cita (Apellidos, Nombre)'], ['institucion', 'Institución (ciudad, país)']];
+    var refs = {};
+    campos.forEach(function (c) {
+      var l = document.createElement('label'); l.textContent = c[1];
+      var inp = document.createElement('input'); inp.type = 'text'; inp.value = x[c[0]] || ''; refs[c[0]] = inp;
+      inp.addEventListener('input', function () {
+        var antes = x.nombre;
+        x[c[0]] = inp.value.trim(); marcarCambio();
+        if (c[0] === 'nombre' && (!x.citacion || x.citacion === citacionDe(antes))) { x.citacion = citacionDe(x.nombre); refs.citacion.value = x.citacion; }
+      });
+      d.appendChild(l); d.appendChild(inp);
+    });
+    cont.appendChild(d);
+  });
+}
+$('btn-mas-autor').onclick = function () { artEdit.autores.push({ nombre: '', citacion: '', institucion: '' }); marcarCambio(); pintarAutores(); };
+$('btn-nuevo-art').onclick = function () { abrirArt(null); };
+function abrirArt(a) {
+  esNuevo = !a;
+  artEdit = a ? clonar(a) : { slug: '', titulo: '', tipo: 'Artículo de revisión', autores: [{ nombre: '', citacion: '', institucion: '' }], anio: new Date().getFullYear(), numero: estado.sitio.numeroActual || '', paginaInicio: null, paginaFin: null, paginas: null, referencias: null, resumen: '', palabrasClave: '', pdf: '', diplomado: false, orden: 0 };
+  if (!artEdit.autores || !artEdit.autores.length) artEdit.autores = [{ nombre: '', citacion: '', institucion: '' }];
+  $('titulo-editor-art').textContent = esNuevo ? 'Nuevo artículo' : 'Editar artículo';
+  $('a-titulo').value = artEdit.titulo; $('a-tipo').value = artEdit.tipo || ''; $('a-numero').value = artEdit.numero || ''; $('a-anio').value = artEdit.anio || '';
+  $('a-pini').value = artEdit.paginaInicio || ''; $('a-pfin').value = artEdit.paginaFin || ''; $('a-paginas').value = artEdit.paginas || ''; $('a-refs').value = artEdit.referencias == null ? '' : artEdit.referencias;
+  $('a-resumen').value = artEdit.resumen || ''; $('a-claves').value = artEdit.palabrasClave || '';
+  $('a-abstract').value = artEdit.abstract || ''; $('a-keywords').value = artEdit.keywords || '';
+  $('a-diplomado').checked = !!artEdit.diplomado;
+  $('a-pdf-estado').textContent = artEdit.pdf ? '✔ Ya tiene PDF: ' + artEdit.pdf + ' (elija otro archivo solo si quiere reemplazarlo).' : 'Todavía no tiene PDF.';
+  aviso('aviso-editor', '', ''); aviso('aviso-panel', '', '');
+  pintarAutores(); verPanel('editor-art'); $('a-titulo').focus();
+}
+['a-titulo', 'a-tipo', 'a-numero', 'a-anio', 'a-pini', 'a-pfin', 'a-paginas', 'a-refs', 'a-resumen', 'a-claves', 'a-abstract', 'a-keywords', 'a-diplomado'].forEach(function (id) { $(id).addEventListener('input', marcarCambio); $(id).addEventListener('change', marcarCambio); });
+var pdfPendiente = null; // {dataUrl, nombre, tamano}
+$('a-pdf').addEventListener('change', function () {
+  var f = this.files && this.files[0]; this.value = ''; if (!f) return;
+  if (f.type && f.type !== 'application/pdf' && !/\.pdf$/i.test(f.name)) { aviso('aviso-editor', 'error', 'El archivo debe ser PDF.'); return; }
+  if (f.size > 20 * 1024 * 1024) { aviso('aviso-editor', 'error', 'El PDF pesa ' + (f.size / 1048576).toFixed(1) + ' MB. El máximo es 20 MB; redúzcalo (por ejemplo con ilovepdf.com, opción «Comprimir PDF») y súbalo de nuevo.'); return; }
+  var r = new FileReader();
+  r.onload = function () { pdfPendiente = { dataUrl: r.result, nombre: f.name, tamano: f.size }; marcarCambio(); $('a-pdf-estado').textContent = '📄 Listo para subir: ' + f.name + ' (' + (f.size / 1048576).toFixed(1) + ' MB). Se sube al pulsar «Publicar».'; };
+  r.onerror = function () { aviso('aviso-editor', 'error', 'No se pudo leer el PDF. Intente de nuevo.'); };
+  r.readAsDataURL(f);
+});
+function num(id) { var v = parseInt($(id).value, 10); return isNaN(v) ? null : v; }
+function leerArt() {
+  var a = clonar(artEdit);
+  a.titulo = $('a-titulo').value.replace(/\s+/g, ' ').trim(); a.tipo = $('a-tipo').value.trim() || 'Artículo'; a.numero = $('a-numero').value; a.anio = num('a-anio');
+  a.paginaInicio = num('a-pini'); a.paginaFin = num('a-pfin'); a.paginas = num('a-paginas'); a.referencias = num('a-refs');
+  if (!a.paginas && a.paginaInicio && a.paginaFin && a.paginaFin >= a.paginaInicio) a.paginas = a.paginaFin - a.paginaInicio + 1;
+  a.resumen = $('a-resumen').value.replace(/\r/g, '').replace(/\s*\n\s*/g, ' ').trim(); a.palabrasClave = $('a-claves').value.trim();
+  var ab = $('a-abstract').value.replace(/\s*\n\s*/g, ' ').trim(), kw = $('a-keywords').value.trim();
+  if (ab) a.abstract = ab; else delete a.abstract; if (kw) a.keywords = kw; else delete a.keywords;
+  a.diplomado = $('a-diplomado').checked;
+  a.autores = a.autores.map(function (x) { return { nombre: (x.nombre || '').trim(), citacion: (x.citacion || citacionDe(x.nombre)).trim(), institucion: (x.institucion || '').trim() }; }).filter(function (x) { return x.nombre; });
+  return a;
+}
+function validarArt(a) {
+  if (!a.titulo) return 'Escriba el título del artículo.';
+  if (!a.autores.length) return 'Escriba al menos un autor.';
+  if (!a.anio || a.anio < 1950 || a.anio > 2100) return 'Revise el año.';
+  if (a.paginaInicio && a.paginaFin && a.paginaFin < a.paginaInicio) return 'La página final no puede ser menor que la inicial.';
+  if (!a.resumen) return 'Escriba el resumen (lo usan Google Académico y Latindex).';
+  return '';
+}
+function asignarSlug(a, arts) {
+  if (a.slug) return;
+  var base = F.slugify(a.titulo).split('-').slice(0, 8).join('-') || 'articulo';
+  var s = base, n = 2;
+  while (arts.some(function (x) { return x.slug === s; })) s = base + '-' + (n++);
+  a.slug = s;
+}
+$('btn-cancelar-art').onclick = function () {
+  if (estado.cambiosSinGuardar && !confirm('¿Descartar los cambios de este artículo?')) return;
+  pdfPendiente = null; estado.cambiosSinGuardar = false; verPanel('articulos');
+};
+$('btn-vista-art').onclick = function () {
+  var a = leerArt(); var err = validarArt(a); if (err) { aviso('aviso-editor', 'error', err); return; }
+  if (!a.slug) a.slug = 'vista-previa';
+  if (pdfPendiente) a.pdf = '';
+  var html = F.paginaArticulo(estado.sitio, estado.numeros, a);
+  html = html.replace('<head>', '<head><base href="' + location.origin + '/">');
+  html = html.replace('<body>', '<body><div style="background:#14A38B;color:#fff;text-align:center;padding:8px;font-weight:700;font-family:sans-serif">VISTA PREVIA — todavía no está publicada' + (pdfPendiente ? ' (el PDF se verá cuando la publique)' : '') + '</div>');
+  var w = window.open('', '_blank');
+  if (!w) { aviso('aviso-editor', 'error', 'El navegador bloqueó la vista previa. Permita las ventanas emergentes para este sitio.'); return; }
+  w.document.open(); w.document.write(html); w.document.close();
+};
+$('btn-publicar-art').onclick = function () {
+  var a = leerArt(); var err = validarArt(a); if (err) { aviso('aviso-editor', 'error', err); return; }
+  if (!a.pdf && !pdfPendiente && !confirm('El artículo no tiene PDF. ¿Publicarlo así?')) return;
+  var cand = candidato();
+  asignarSlug(a, cand.arts);
+  if (pdfPendiente) {
+    var ruta = '/articulos/' + a.slug + '.pdf';
+    if (a.pdf && a.pdf !== ruta) borrarRutas.push(a.pdf);
+    a.pdf = ruta; nuevosArchivos[ruta] = pdfPendiente.dataUrl;
+  }
+  if (esNuevo && !a.orden) a.orden = cand.arts.filter(function (x) { return x.numero === a.numero; }).reduce(function (m, x) { return Math.max(m, x.orden || 0); }, 0) + 1;
+  var i = cand.arts.findIndex(function (x) { return x.slug === a.slug; });
+  if (i >= 0 && !esNuevo) cand.arts[i] = a; else cand.arts.push(a);
+  publicar(cand, (esNuevo ? 'Nuevo artículo: ' : 'Edición de artículo: ') + a.titulo, 'aviso-editor', function () { pdfPendiente = null; pintarArts(); pintarNums(); verPanel('articulos'); })
+    .then(function (ok) { if (ok) aviso('aviso-panel', 'ok', '✔ Publicado. En 1 o 2 minutos podrá verlo en ' + F.SITIO + '/articulo/' + a.slug + '.html'); });
+};
+function eliminarArt(a) {
+  if (!confirm('¿Eliminar definitivamente «' + a.titulo + '»? Su página y su PDF dejarán de existir en la web.')) return;
+  var cand = candidato();
+  cand.arts = cand.arts.filter(function (x) { return x.slug !== a.slug; });
+  borrarRutas = ['/articulo/' + a.slug + '.html'].concat(a.pdf ? [a.pdf] : []);
+  publicar(cand, 'Artículo eliminado: ' + a.titulo, 'aviso-panel', function () { pintarArts(); pintarNums(); }).then(function (ok) { if (!ok) borrarRutas = []; });
+}
+</script>
+</body>
+</html>
