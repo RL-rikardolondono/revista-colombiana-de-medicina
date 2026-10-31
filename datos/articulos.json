@@ -8,7 +8,9 @@
     {
      "nombre": "Ricardo Londoño González",
      "citacion": "Londoño González, Ricardo",
-     "institucion": "Universidad del Magdalena (Colombia); Universidad Rey Juan Carlos (España)"
+     "institucion": "Universidad del Magdalena (Colombia); Universidad Rey Juan Carlos (España)",
+     "orcid": "",
+     "ciudad": ""
     }
    ],
    "anio": 2026,
@@ -21,7 +23,14 @@
    "palabrasClave": "Autismo; folato; leucovorina; autoanticuerpos; biomarcador",
    "pdf": "/articulos/deficit-folato-cerebral-tea.pdf",
    "diplomado": true,
-   "orden": 1
+   "orden": 1,
+   "tituloIngles": "Cerebral folate deficiency and folate receptor alpha autoimmunity in autism spectrum disorder: biomarkers, response to leucovorin and therapeutic implications",
+   "abstract": "Over the last two decades, a subgroup of children with autism spectrum disorder (ASD) has been described who present cerebral folate deficiency (CFD) with normal serum folate levels, associated with circulating autoantibodies against the folate receptor alpha (FRAA). These antibodies interfere with the transport of 5-methyltetrahydrofolate (5-MTHF) across the blood-brain barrier, compromising methylation-dependent processes and neurotransmitter synthesis. The prevalence of FRAA in pediatric populations with ASD has been estimated at 60% to 75%, significantly higher than in neurotypical controls. Controlled clinical trials have shown improvement in communication, adaptive behavior and core autism symptoms after administration of supraphysiological doses of folinic acid, with more pronounced effects in FRAA-positive individuals. Diagnosis requires confirmation by measuring 5-MTHF in cerebrospinal fluid, although serum detection of FRAA is a clinically useful indirect biomarker. This review examines the current evidence on pathophysiology, diagnostic methods, therapeutic trials with leucovorin and pending controversies.",
+   "keywords": "Autism; folate; leucovorin; autoantibodies; biomarker",
+   "fechaRecibido": "",
+   "fechaAceptado": "",
+   "fechaPublicado": "2026-10-05",
+   "doi": ""
   },
   {
    "slug": "acetaminofen-folato-tea",
@@ -31,7 +40,9 @@
     {
      "nombre": "Ricardo Londoño González",
      "citacion": "Londoño González, Ricardo",
-     "institucion": "Universidad Rey Juan Carlos (España)"
+     "institucion": "Universidad Rey Juan Carlos (España)",
+     "orcid": "",
+     "ciudad": ""
     }
    ],
    "anio": 2026,
@@ -44,7 +55,14 @@
    "palabrasClave": "Acetaminofén; trastorno del espectro autista; exposición prenatal; déficit cerebral de folato; ácido folínico",
    "pdf": "/articulos/acetaminofen-folato-tea.pdf",
    "diplomado": true,
-   "orden": 2
+   "orden": 2,
+   "tituloIngles": "Acetaminophen, folate metabolism and autism spectrum disorder: from epidemiological evidence to therapeutic plausibility with folinic acid",
+   "abstract": "Prenatal exposure to acetaminophen has been epidemiologically associated with an increased risk of autism spectrum disorder (ASD), although the most rigorous studies with within-family (sibling) controls have shown that this association is substantially attenuated, suggesting that shared genetic and environmental factors explain much of the apparent link. In parallel, a subgroup of patients with ASD (60-75%) has been found to have cerebral folate deficiency mediated by autoantibodies (FRAA), with a favorable response to folinic acid treatment. Although there are plausible pathophysiological mechanisms linking acetaminophen to neurotoxicity, regulatory agencies maintain their recommendation of it as the analgesic of choice during pregnancy, emphasizing judicious use while moving toward a precision medicine approach to ASD management through the identification of subpopulations that respond to specific therapies.",
+   "keywords": "Acetaminophen; autism spectrum disorder; prenatal exposure; cerebral folate deficiency; folinic acid",
+   "fechaRecibido": "",
+   "fechaAceptado": "",
+   "fechaPublicado": "2026-10-05",
+   "doi": ""
   },
   {
    "slug": "multirresistencia-bacteriana",
@@ -54,7 +72,9 @@
     {
      "nombre": "Ricardo Londoño González",
      "citacion": "Londoño González, Ricardo",
-     "institucion": "Universidad del Magdalena, Santa Marta (Colombia)"
+     "institucion": "Universidad del Magdalena, Santa Marta (Colombia)",
+     "orcid": "",
+     "ciudad": ""
     }
    ],
    "anio": 2026,
@@ -67,7 +87,14 @@
    "palabrasClave": "Resistencia bacteriana; antibióticos; salud pública; medicina veterinaria; multirresistencia",
    "pdf": "/articulos/multirresistencia-bacteriana.pdf",
    "diplomado": false,
-   "orden": 3
+   "orden": 3,
+   "tituloIngles": "Bacterial multidrug resistance",
+   "abstract": "Bacterial resistance to antibiotics has become one of the greatest threats to global public health. It occurs when bacteria develop mechanisms that allow them to survive antibiotic treatments that were previously effective. The indiscriminate use of antibiotics in human and veterinary medicine has accelerated this process, leading to infections that are harder to treat and to increased mortality and morbidity. This article analyzes the scope of the problem, focusing on the impact of antibiotic use in veterinary medicine and its influence on human medicine. It also explores the causes and contributing factors, the impact on public health, the epidemiology of the main multidrug-resistant bacteria, resistance mechanisms and their clinical consequences.",
+   "keywords": "Bacterial resistance; antibiotics; public health; veterinary medicine; multidrug resistance",
+   "fechaRecibido": "",
+   "fechaAceptado": "",
+   "fechaPublicado": "2026-10-05",
+   "doi": ""
   },
   {
    "slug": "respirando-con-vih",
@@ -77,7 +104,9 @@
     {
      "nombre": "Ricardo Londoño González",
      "citacion": "Londoño González, Ricardo",
-     "institucion": "Universidad del Magdalena (Colombia)"
+     "institucion": "Universidad del Magdalena (Colombia)",
+     "orcid": "",
+     "ciudad": ""
     }
    ],
    "anio": 2023,
@@ -90,7 +119,14 @@
    "palabrasClave": "Anomalías respiratorias; VIH; tratamiento; farmacología; cuidados generales",
    "pdf": "/articulos/respirando-con-vih.pdf",
    "diplomado": false,
-   "orden": 4
+   "orden": 4,
+   "tituloIngles": "Breathing with HIV: a look at pulmonary abnormalities and their treatment",
+   "abstract": "This article focuses on respiratory abnormalities in patients with HIV. It analyzes the main causes of these conditions, including opportunistic pulmonary infections and non-infectious diseases, and proposes a diagnostic process to guide the etiology of the respiratory abnormality. Treatment, pharmacology and general care for these conditions in seroconverted patients are also discussed. The aim is to provide a comprehensive understanding of respiratory abnormalities in patients with HIV and tools for their effective management.",
+   "keywords": "Respiratory abnormalities; HIV; treatment; pharmacology; general care",
+   "fechaRecibido": "",
+   "fechaAceptado": "",
+   "fechaPublicado": "",
+   "doi": ""
   },
   {
    "slug": "candida-auris",
@@ -100,7 +136,9 @@
     {
      "nombre": "Ricardo Londoño González",
      "citacion": "Londoño González, Ricardo",
-     "institucion": "Universidad del Magdalena (Colombia); Universidad Rey Juan Carlos (España)"
+     "institucion": "Universidad del Magdalena (Colombia); Universidad Rey Juan Carlos (España)",
+     "orcid": "",
+     "ciudad": ""
     }
    ],
    "anio": 2019,
@@ -113,7 +151,14 @@
    "palabrasClave": "Candida auris; nueva especie; multirresistencia; infección asociada a la atención en salud",
    "pdf": "/articulos/candida-auris.pdf",
    "diplomado": false,
-   "orden": 5
+   "orden": 5,
+   "tituloIngles": "Candida auris",
+   "abstract": "Candida auris is a fungus that grows as a yeast, first described in 2009 from the external ear canal of a patient hospitalized in Tokyo. Analyses of the 26S rDNA D1/D2 domain, sequences of the ITS region of ribosomal DNA and chemotaxonomic studies indicated a new species closely related phylogenetically to Candida ruelliae and Candida haemulonii. It causes candidiasis in humans, frequently acquired in healthcare facilities by immunosuppressed patients; it can cause fungemia, affect the central nervous system and spread to any organ. It is notable for its rapid global spread and its multidrug resistance.",
+   "keywords": "Candida auris; new species; multidrug resistance; healthcare-associated infection",
+   "fechaRecibido": "",
+   "fechaAceptado": "",
+   "fechaPublicado": "",
+   "doi": ""
   }
  ]
 }

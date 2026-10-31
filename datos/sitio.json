@@ -27,16 +27,40 @@
   "asuntoCorreo": "Manuscrito - Convocatoria Número 2"
  },
  "autores": {
-  "tipos": ["Artículos originales de investigación", "Artículos de revisión", "Reportes de caso", "Artículos de educación médica", "Cartas al editor"],
-  "proceso": ["Envío del manuscrito al correo de la revista.", "Revisión editorial inicial (pertinencia y formato).", "Evaluación por pares en modalidad doble ciego.", "Decisión editorial y ajustes.", "Publicación en acceso abierto."],
-  "requisitos": ["Inédito y no enviado a otra revista.", "Título, resumen y palabras clave en español e inglés.", "Referencias en estilo Vancouver o APA.", "Declaración de conflictos de interés.", "Aval de comité de ética cuando incluya pacientes."],
+  "tipos": [
+   "Artículos originales de investigación",
+   "Artículos de revisión",
+   "Reportes de caso",
+   "Artículos de educación médica",
+   "Cartas al editor"
+  ],
+  "proceso": [
+   "Envío del manuscrito al correo de la revista.",
+   "Revisión editorial inicial (pertinencia y formato).",
+   "Evaluación por pares en modalidad doble ciego.",
+   "Decisión editorial y ajustes.",
+   "Publicación en acceso abierto."
+  ],
+  "requisitos": [
+   "Inédito y no enviado a otra revista.",
+   "Título, resumen y palabras clave en español e inglés.",
+   "Referencias en estilo Vancouver o APA.",
+   "Declaración de conflictos de interés.",
+   "Aval de comité de ética cuando incluya pacientes."
+  ],
   "etica": "La revista sigue las recomendaciones del ICMJE y del COPE. Los artículos se publican en acceso abierto bajo licencia **Creative Commons Atribución-NoComercial 4.0**: cualquier persona puede leerlos, descargarlos y compartirlos citando al autor y sin fines comerciales. Los autores conservan sus derechos."
  },
  "comite": {
-  "editorJefe": { "nombre": "Ricardo Londoño González, MD, MSc", "detalle": "Médico (Universidad del Magdalena) · MSc (Universidad Rey Juan Carlos, España) · Grupo de Investigación en Inmunología y Patología (GIPAT), Universidad del Magdalena" },
+  "editorJefe": {
+   "nombre": "Ricardo Londoño González, MD, MSc",
+   "detalle": "Médico (Universidad del Magdalena) · MSc (Universidad Rey Juan Carlos, España) · Grupo de Investigación en Inmunología y Patología (GIPAT), Universidad del Magdalena"
+  },
   "miembros": [],
   "textoCientifico": "En conformación. Los profesionales interesados en participar como pares evaluadores pueden escribir al correo de la revista.",
-  "asesoria": { "nombre": "Clínica Reina Elizabeth IPS", "detalle": "Santa Marta, Magdalena, Colombia" }
+  "asesoria": {
+   "nombre": "Clínica Reina Elizabeth IPS",
+   "detalle": "Santa Marta, Magdalena, Colombia"
+  }
  },
  "formacion": {
   "diplomado": {
@@ -53,9 +77,34 @@
    "titulo": "Cursos de actualización para personal de salud",
    "texto": "Cursos que las instituciones de salud exigen a médicos, enfermeras y demás personal asistencial para la habilitación de servicios.",
    "grupos": [
-    { "titulo": "Reanimación y soporte vital", "items": ["Soporte vital básico (SVB / BLS)", "Soporte vital avanzado (SVA / ACLS)", "Soporte vital pediátrico (PALS)", "Reanimación neonatal"] },
-    { "titulo": "Materno-infantil", "items": ["AIEPI: Atención Integrada a las Enfermedades Prevalentes de la Infancia", "Atención y cuidado del paciente neonatal (UCI neonatal)"] },
-    { "titulo": "Exigidos por la Resolución 3100 de 2019", "items": ["Atención integral a víctimas de violencia sexual", "Triage (Resolución 5596 de 2015)", "Seguridad del paciente: control de infecciones, identificación correcta y comunicación asertiva", "Pruebas en el punto de atención (POCT)", "Atención en salud mental", "Gestión del duelo", "Cuidado del donante de órganos y tejidos"] }
+    {
+     "titulo": "Reanimación y soporte vital",
+     "items": [
+      "Soporte vital básico (SVB / BLS)",
+      "Soporte vital avanzado (SVA / ACLS)",
+      "Soporte vital pediátrico (PALS)",
+      "Reanimación neonatal"
+     ]
+    },
+    {
+     "titulo": "Materno-infantil",
+     "items": [
+      "AIEPI: Atención Integrada a las Enfermedades Prevalentes de la Infancia",
+      "Atención y cuidado del paciente neonatal (UCI neonatal)"
+     ]
+    },
+    {
+     "titulo": "Exigidos por la Resolución 3100 de 2019",
+     "items": [
+      "Atención integral a víctimas de violencia sexual",
+      "Triage (Resolución 5596 de 2015)",
+      "Seguridad del paciente: control de infecciones, identificación correcta y comunicación asertiva",
+      "Pruebas en el punto de atención (POCT)",
+      "Atención en salud mental",
+      "Gestión del duelo",
+      "Cuidado del donante de órganos y tejidos"
+     ]
+    }
    ],
    "textoGold": "**Membresía Gold · Formación continua en convenio con POLIANDES:** cursos obligatorios de actualización para profesionales de la salud (reanimación SVB/SVA/PALS/neonatal, AIEPI, UCI neonatal y cursos de la Resolución 3100 de 2019). Los miembros Gold tienen 90 % de descuento y prioridad en los cupos.",
    "enlace": "https://poliandes.com/profesionales-salud/?ref=revista",
@@ -65,5 +114,82 @@
  "contacto": {
   "correo": "contacto@revistacolombianademedicina.com",
   "whatsappSoporte": "3044375758"
- }
+ },
+ "abreviatura": "Rev Colomb Med",
+ "entidadEditora": {
+  "nombre": "Fundación Reina Elizabeth ONG",
+  "url": "https://fundacionreinaelizabeth.com/publicaciones/",
+  "ciudad": "Santa Marta, Magdalena, Colombia"
+ },
+ "boletin": {
+  "mostrar": false,
+  "servicio": "",
+  "titulo": "Reciba cada número en su correo",
+  "texto": "Le avisamos por correo cuando se publique un número nuevo o se abra una convocatoria. Puede darse de baja cuando quiera."
+ },
+ "manuscritos": {
+  "servicio": ""
+ },
+ "politicas": [
+  {
+   "id": "enfoque",
+   "titulo": "Enfoque y alcance",
+   "texto": "La **Revista Colombiana de Medicina** publica investigación original, revisiones de tema, reportes de caso, artículos de educación médica y cartas al editor en todas las áreas de la medicina y las ciencias de la salud, con énfasis en problemas relevantes para Colombia y América Latina.\n\nEstá dirigida a médicos, investigadores, docentes, estudiantes y demás profesionales de la salud. Se publica en español, con título, resumen y palabras clave también en inglés."
+  },
+  {
+   "id": "editora",
+   "titulo": "Entidad editora",
+   "texto": "La revista es editada por la **Fundación Reina Elizabeth ONG**, Santa Marta (Magdalena), Colombia (https://fundacionreinaelizabeth.com/publicaciones/), con la asesoría científica de la Clínica Reina Elizabeth IPS.\n\n- ISSN en línea: 2500-4751\n- ISSN impreso: 2027-5188\n- Correo editorial: contacto@revistacolombianademedicina.com"
+  },
+  {
+   "id": "periodicidad",
+   "titulo": "Periodicidad",
+   "texto": "La revista es **bimestral**: publica seis números al año. Cada número se publica completo en la fecha anunciada en la convocatoria. Los artículos aceptados fuera de plazo pasan al número siguiente."
+  },
+  {
+   "id": "pares",
+   "titulo": "Proceso de revisión por pares",
+   "texto": "Todos los manuscritos siguen este proceso:\n\n- **Revisión editorial inicial** (hasta 10 días): el comité editorial verifica que el tema corresponda a la revista, que cumpla los requisitos de forma y que no presente plagio.\n- **Evaluación por pares doble ciego**: cada manuscrito que pasa la revisión inicial se envía a dos evaluadores expertos, externos a la institución de los autores. Ni los autores conocen a los evaluadores ni los evaluadores a los autores.\n- **Concepto de los evaluadores** (hasta 30 días): aceptar, aceptar con cambios menores, solicitar cambios mayores o rechazar. Si los conceptos no coinciden se pide un tercer evaluador.\n- **Ajustes de los autores** (hasta 15 días) y verificación de los cambios por el comité editorial.\n- **Decisión final** del editor jefe, que se comunica por escrito a los autores con los comentarios de los evaluadores.\n\nLas cartas al editor y los editoriales los revisa el comité editorial sin evaluación externa."
+  },
+  {
+   "id": "etica",
+   "titulo": "Ética de la publicación",
+   "texto": "La revista sigue las recomendaciones del Comité Internacional de Editores de Revistas Médicas (ICMJE) y del Comité de Ética en Publicaciones (COPE).\n\n- Los estudios con seres humanos deben contar con aval de un comité de ética y consentimiento informado, conforme a la Resolución 8430 de 1993 del Ministerio de Salud y a la Declaración de Helsinki.\n- Todos los autores deben haber contribuido de forma sustancial al trabajo; se recomienda describir la contribución de cada uno.\n- Autores, evaluadores y editores deben declarar cualquier conflicto de interés.\n- Los evaluadores tratan los manuscritos como confidenciales y no los usan en beneficio propio."
+  },
+  {
+   "id": "plagio",
+   "titulo": "Política contra el plagio",
+   "texto": "Todo manuscrito se revisa con herramientas de detección de similitud antes de enviarse a evaluación. Se rechazan los manuscritos con plagio, autoplagio sin citar, publicación duplicada o fabricación o manipulación de datos.\n\nSi se detecta una falta después de publicado el artículo, se seguirán las guías de COPE y podrá publicarse una corrección o una retractación."
+  },
+  {
+   "id": "ia",
+   "titulo": "Uso de inteligencia artificial",
+   "texto": "Las herramientas de inteligencia artificial no pueden figurar como autoras. Los autores que las usen para redactar, traducir o analizar datos deben declararlo en la sección de métodos o en los agradecimientos, y son responsables de la exactitud de todo el contenido. Los evaluadores no deben cargar los manuscritos en herramientas de inteligencia artificial, para proteger su confidencialidad."
+  },
+  {
+   "id": "acceso",
+   "titulo": "Acceso abierto y licencia",
+   "texto": "La revista es de **acceso abierto inmediato**: todos los artículos se pueden leer, descargar e imprimir gratis, sin registro.\n\nLos artículos se publican bajo licencia **Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)**: cualquier persona puede compartirlos y adaptarlos citando a los autores y a la revista, sin fines comerciales. Los autores conservan sus derechos de autor."
+  },
+  {
+   "id": "cargos",
+   "titulo": "Cargos a los autores",
+   "texto": "La revista **no cobra** a los autores por recibir, evaluar ni publicar sus artículos."
+  },
+  {
+   "id": "conservacion",
+   "titulo": "Conservación digital",
+   "texto": "La revista conserva copia de todos sus contenidos en al menos dos ubicaciones independientes: el sitio web de la revista y su repositorio de respaldo con historial completo de versiones. Cada artículo tiene una dirección permanente y su PDF se mantiene disponible aunque cambie el diseño del sitio. La revista gestiona además su inclusión en sistemas de preservación digital para revistas científicas."
+  },
+  {
+   "id": "correcciones",
+   "titulo": "Correcciones y retractaciones",
+   "texto": "Cuando se encuentra un error que afecta la interpretación de un artículo publicado, se publica una fe de erratas enlazada al artículo original. Si los resultados no son confiables por error grave o falta ética, el artículo se retracta: se mantiene visible con la marca de retractado y la explicación."
+  },
+  {
+   "id": "privacidad",
+   "titulo": "Privacidad y datos personales",
+   "texto": "Los nombres y correos que se registran en la revista se usan solo para el proceso editorial y para los avisos que la persona solicite, conforme a la Ley 1581 de 2012. No se ceden a terceros. Cualquier persona puede pedir que se corrijan o eliminen sus datos escribiendo a contacto@revistacolombianademedicina.com."
+  }
+ ]
 }
