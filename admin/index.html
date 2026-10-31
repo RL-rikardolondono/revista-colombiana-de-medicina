@@ -70,24 +70,39 @@ ol li{margin-bottom:6px}
 
 <main>
 <!-- ============ INGRESO ============ -->
-<section id="vista-ingreso" class="caja" style="max-width:620px;margin:30px auto">
-  <h2>Entrar al panel</h2>
-  <p>Pegue aquí la <b>contraseña del panel</b>. Esta contraseña solo sirve para esta web (<span id="nombre-repo"></span>) y queda guardada únicamente en este equipo.</p>
-  <label for="llave">Contraseña del panel</label>
-  <input type="password" id="llave" autocomplete="off" placeholder="github_pat_…">
-  <label class="check"><input type="checkbox" id="recordar" checked> Recordar en este equipo</label>
-  <div class="botones"><button class="boton b-principal" type="button" id="btn-entrar">Entrar</button></div>
-  <div id="aviso-ingreso"></div>
-  <details style="margin-top:18px"><summary>¿No tiene la contraseña? Cómo crearla (una sola vez)</summary>
+<section id="vista-ingreso" style="max-width:620px;margin:30px auto">
+  <div class="caja" id="caja-entrar">
+    <h2>Entrar al panel</h2>
+    <p>Entre con su correo y su contraseña del panel.</p>
+    <label for="ing-correo">Correo</label><input type="email" id="ing-correo" autocomplete="username">
+    <label for="ing-clave">Contraseña</label><input type="password" id="ing-clave" autocomplete="current-password">
+    <label class="check"><input type="checkbox" id="recordar" checked> Recordar en este equipo (no lo marque en computadores ajenos)</label>
+    <div id="aviso-ingreso"></div>
+    <div class="botones"><button class="boton b-principal" type="button" id="btn-entrar">Entrar</button></div>
+    <p class="ayuda" style="margin-top:14px"><a href="#" id="btn-olvido">¿Olvidó su contraseña?</a> · <a href="#" id="btn-primera">¿Primera vez? Crear mi contraseña</a></p>
+  </div>
+  <div class="caja oculto" id="caja-nueva">
+    <h2>Crear nueva contraseña</h2>
+    <p>Escriba su nueva contraseña del panel (mínimo 8 caracteres).</p>
+    <label for="nueva-clave">Nueva contraseña</label><input type="password" id="nueva-clave" autocomplete="new-password">
+    <label for="nueva-clave2">Repita la contraseña</label><input type="password" id="nueva-clave2" autocomplete="new-password">
+    <div id="aviso-nueva"></div>
+    <div class="botones"><button class="boton b-principal" type="button" id="btn-clave-nueva">Guardar y entrar</button></div>
+  </div>
+  <div class="caja oculto" id="caja-llave">
+    <h2>Configuración inicial (solo una vez)</h2>
+    <p>Para que el panel pueda publicar en la web, GitHub necesita una llave de acceso. Se pega <b>una sola vez</b>: queda guardada de forma segura en el servidor y no tendrá que volver a verla.</p>
     <ol>
-      <li>Inicie sesión en GitHub y abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">esta página para crear la contraseña</a>.</li>
+      <li>Inicie sesión en GitHub y abra <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">esta página</a>.</li>
       <li>En <b>Token name</b> escriba: <i id="nombre-llave"></i>. En <b>Expiration</b> elija <b>No expiration</b>.</li>
-      <li>En <b>Repository access</b> elija <b>Only select repositories</b> y marque solo <b id="nombre-repo2"></b>.</li>
-      <li>En <b>Permissions → Repository permissions</b>, busque <b>Contents</b> y elija <b>Read and write</b>.</li>
-      <li>Pulse <b>Generate token</b>, copie el código que empieza por <b>github_pat_</b> y péguelo arriba.</li>
+      <li>En <b>Repository access</b> elija <b>Only select repositories</b> y marque solo <b id="nombre-repo"></b>.</li>
+      <li>En <b>Permissions → Repository permissions</b>, ponga <b>Contents</b> en <b>Read and write</b>. Nada más.</li>
+      <li>Pulse <b>Generate token</b>, copie la llave (empieza por <code>github_pat_</code>) y péguela aquí abajo.</li>
     </ol>
-    <p class="ayuda">Si pierde el computador, borre esa contraseña en GitHub (Settings → Developer settings → Personal access tokens) y cree una nueva. Las demás webs no se ven afectadas.</p>
-  </details>
+    <label for="llave">Llave de GitHub</label><input type="password" id="llave" autocomplete="off" placeholder="github_pat_…">
+    <div id="aviso-llave"></div>
+    <div class="botones"><button class="boton b-principal" type="button" id="btn-llave">Guardar y entrar</button></div>
+  </div>
 </section>
 
 <!-- ============ PANEL ============ -->
@@ -100,6 +115,7 @@ ol li{margin-bottom:6px}
     <button class="pestana" data-pestana="portada" aria-selected="false">Portada y avisos</button>
     <button class="pestana" data-pestana="comite" aria-selected="false">Comité editorial</button>
     <button class="pestana" data-pestana="formacion" aria-selected="false">Formación</button>
+    <button class="pestana" data-pestana="politicas" aria-selected="false">Políticas</button>
   </nav>
 
   <!-- Artículos -->
@@ -115,13 +131,14 @@ ol li{margin-bottom:6px}
     <div class="caja">
       <h2 id="titulo-editor-art">Nuevo artículo</h2>
       <label for="a-titulo">Título del artículo</label><input type="text" id="a-titulo">
+      <label for="a-titulo-en">Título en inglés</label><input type="text" id="a-titulo-en">
       <div class="fila">
         <div><label for="a-tipo">Tipo de artículo</label><input type="text" id="a-tipo" list="tipos-art"><datalist id="tipos-art"><option value="Artículo original"><option value="Artículo de revisión"><option value="Reporte de caso"><option value="Educación médica"><option value="Carta al editor"><option value="Editorial"></datalist></div>
         <div><label for="a-numero">¿En qué número?</label><select id="a-numero"></select></div>
         <div><label for="a-anio">Año</label><input type="number" id="a-anio" min="1950" max="2100"></div>
       </div>
       <label>Autores</label>
-      <p class="ayuda">Uno por renglón. «Cómo aparece en la cita» se llena solo (Apellidos, Nombre); corríjalo si hace falta.</p>
+      <p class="ayuda">Uno por recuadro. «Cómo aparece en la cita» se llena solo (Apellidos, Nombre); corríjalo si hace falta. El ORCID es el código de 16 cifras del autor en orcid.org (opcional).</p>
       <div id="a-autores"></div>
       <button class="boton b-chico" type="button" id="btn-mas-autor">+ Agregar autor</button>
       <div class="fila">
@@ -130,9 +147,15 @@ ol li{margin-bottom:6px}
         <div><label for="a-paginas">Número de páginas</label><input type="number" id="a-paginas" min="1"></div>
         <div><label for="a-refs">Número de referencias</label><input type="number" id="a-refs" min="0"></div>
       </div>
+      <div class="fila">
+        <div><label for="a-frec">Fecha de recibido</label><input type="date" id="a-frec"></div>
+        <div><label for="a-facep">Fecha de aceptado</label><input type="date" id="a-facep"></div>
+        <div><label for="a-fpub">Fecha de publicado</label><input type="date" id="a-fpub"></div>
+      </div>
+      <label for="a-doi">DOI (cuando la revista lo tenga)</label><input type="text" id="a-doi" placeholder="10.xxxxx/rcm.2026.001">
       <label for="a-resumen">Resumen</label><textarea id="a-resumen" class="alto"></textarea>
       <label for="a-claves">Palabras clave</label><input type="text" id="a-claves" placeholder="Separadas por punto y coma (;)">
-      <details style="margin-top:14px"><summary>Resumen en inglés (abstract) — recomendado para Latindex</summary>
+      <details style="margin-top:14px"><summary>Resumen en inglés (abstract) — lo pide Latindex</summary>
         <label for="a-abstract">Abstract</label><textarea id="a-abstract"></textarea>
         <label for="a-keywords">Keywords</label><input type="text" id="a-keywords">
       </details>
@@ -165,6 +188,7 @@ ol li{margin-bottom:6px}
       </div>
       <label for="n-periodo">Periodo</label><input type="text" id="n-periodo" placeholder="Ej.: Noviembre–diciembre de 2026">
       <label for="n-tema">Tema central</label><input type="text" id="n-tema" placeholder="Ej.: epidemiología, infectología y salud pública">
+      <label for="n-presentacion">Presentación del número (opcional, sale en la página del número)</label><textarea id="n-presentacion"></textarea>
       <label class="check"><input type="checkbox" id="n-actual"> Que sea el número actual (el que aparece primero en la portada)</label>
       <p class="ayuda">El título se arma solo: «Nueva época · Vol. 1, Núm. 2 (2026)».</p>
       <div class="botones"><button class="boton b-principal" type="button" id="btn-guardar-num">Publicar</button><button class="boton" type="button" id="btn-cancelar-num">Cancelar</button></div>
@@ -220,6 +244,23 @@ ol li{margin-bottom:6px}
       <label>Etiqueta de la época</label><input type="text" data-campo="etiquetaEpoca">
       <label>Correo editorial</label><input type="email" data-campo="contacto.correo">
       <label>Ciudad</label><input type="text" data-campo="ciudad">
+      <label>Abreviatura de la revista (para las citas)</label><input type="text" data-campo="abreviatura" placeholder="Rev Colomb Med">
+      <div class="fila">
+        <div><label>Entidad editora</label><input type="text" data-campo="entidadEditora.nombre"></div>
+        <div><label>Página de la entidad editora</label><input type="url" data-campo="entidadEditora.url"></div>
+      </div>
+    </div>
+    <div class="caja">
+      <h2>Boletín por correo</h2>
+      <p class="ayuda">Caja para que los lectores dejen su correo y reciban cada número nuevo (los correos salen por Brevo).</p>
+      <label class="check"><input type="checkbox" data-campo="boletin.mostrar"> Mostrar la caja del boletín en la web</label>
+      <label>Título de la caja</label><input type="text" data-campo="boletin.titulo">
+      <label>Texto de la caja</label><textarea data-campo="boletin.texto"></textarea>
+      <details style="margin-top:14px"><summary>Ajustes técnicos (no los cambie sin hablar con SkyNet Genesis)</summary>
+        <label>Dirección del servicio del boletín</label><input type="url" data-campo="boletin.servicio">
+        <label>Dirección del servicio de manuscritos</label><input type="url" data-campo="manuscritos.servicio">
+        <p class="ayuda">Si la dirección de manuscritos está vacía, la página «Enviar artículo» muestra solo el correo editorial.</p>
+      </details>
       <div class="botones"><button class="boton b-principal" type="button" data-guardar="portada">Publicar cambios</button></div>
       <div id="aviso-portada"></div>
     </div>
@@ -272,6 +313,17 @@ ol li{margin-bottom:6px}
       <div id="aviso-formacion"></div>
     </div>
   </div>
+  <!-- Políticas -->
+  <div data-panel="politicas" class="oculto">
+    <div class="caja">
+      <h2>Políticas editoriales</h2>
+      <p class="ayuda">Se publican en la página «Políticas» de la web. Latindex y DOAJ revisan que estén completas. Formato: **texto** = negrita; línea en blanco = nuevo párrafo.</p>
+      <div id="pol-lista"></div>
+      <button class="boton b-chico" type="button" id="btn-mas-pol">+ Agregar política</button>
+      <div class="botones"><button class="boton b-principal" type="button" data-guardar="politicas">Publicar cambios</button></div>
+      <div id="aviso-politicas"></div>
+    </div>
+  </div>
 </section>
 <p class="pie">Panel desarrollado por SkyNet Genesis · contacto@skynetgenesis.com · WhatsApp 304 437 5758</p>
 </main>
@@ -285,7 +337,10 @@ var CONFIG = {
   repo: 'revista-colombiana-de-medicina',
   rama: 'main',
   sitio: 'revistacolombianademedicina.com',
-  claveLocal: 'panel-revista-llave'
+  sitioId: 'revista',                                          // nombre de esta web en el servicio de ingreso
+  correo: 'contacto@revistacolombianademedicina.com',          // correo que entra al panel
+  ingreso: 'https://skynetgenesis.com/ingreso/api.php',        // servicio central de ingreso de SkyNet Genesis
+  claveLocal: 'panel-revista-sesion'
 };
 /* ======================================================================================= */
 var F = window.Formato;
@@ -305,7 +360,7 @@ function boton(txt, clases, fn) { var b = document.createElement('button'); b.ty
 function marcarCambio() { estado.cambiosSinGuardar = true; }
 
 $('nombre-sitio').textContent = CONFIG.sitio;
-$('nombre-repo').textContent = CONFIG.repo; $('nombre-repo2').textContent = CONFIG.repo;
+$('nombre-repo').textContent = CONFIG.repo;
 $('nombre-llave').textContent = 'Panel ' + CONFIG.sitio;
 
 /* ---------- GitHub ---------- */
@@ -321,9 +376,9 @@ function gh(ruta, op) {
 }
 function errorGH(st, msg) {
   var e = new Error(msg); e.status = st;
-  if (st === 401) e.message = 'La contraseña no es válida o ya venció. Cree una nueva en GitHub y vuelva a entrar.';
-  else if (st === 403) e.message = 'La contraseña no tiene permiso para escribir en esta web. Revise que tenga «Contents: Read and write» sobre ' + CONFIG.repo + '.';
-  else if (st === 404) e.message = 'No se encontró la web ' + CONFIG.repo + ' con esta contraseña. Revise que la contraseña tenga acceso a ese repositorio.';
+  if (st === 401) e.message = 'La llave de GitHub no es válida o ya venció.';
+  else if (st === 403) e.message = 'La llave de GitHub no tiene permiso para escribir en esta web. Revise que tenga «Contents: Read and write» sobre ' + CONFIG.repo + '.';
+  else if (st === 404) e.message = 'No se encontró el repositorio ' + CONFIG.repo + ' con esta llave de GitHub.';
   else if (st === 422) e.message = 'GitHub rechazó el cambio (' + msg + '). Si subió un PDF muy grande, redúzcalo a menos de 20 MB.';
   else if (!st) e.message = 'No hay conexión a internet. Intente de nuevo.';
   return e;
@@ -391,10 +446,21 @@ function publicar(cand, mensaje, avisoId, alTerminar) {
   });
 }
 
-/* ---------- Ingreso ---------- */
-function entrar(llave, recordar) {
-  estado.llave = String(llave || '').trim();
-  if (!/^(github_pat_|ghp_)/.test(estado.llave)) { aviso('aviso-ingreso', 'error', 'Eso no parece una contraseña del panel. Debe empezar por «github_pat_».'); return; }
+/* ---------- Ingreso (correo y contraseña por el servicio central) ---------- */
+function api(accion, datos) {
+  datos = datos || {}; datos.sitio = CONFIG.sitioId; datos.accion = accion;
+  return fetch(CONFIG.ingreso + '?sitio=' + encodeURIComponent(CONFIG.sitioId), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos), cache: 'no-store' })
+    .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.ok) { var e = new Error(j.error || 'No se pudo conectar con el servicio de ingreso. Intente de nuevo.'); e.status = r.status; throw e; } return j; }); },
+          function () { throw new Error('No hay conexión a internet. Intente de nuevo.'); });
+}
+function verCaja(id) { ['caja-entrar', 'caja-nueva', 'caja-llave'].forEach(function (c) { $(c).classList.toggle('oculto', c !== id); }); $('vista-ingreso').classList.remove('oculto'); }
+function guardarSesion(v, recordar) { borrarLS(CONFIG.claveLocal); guardarLS(CONFIG.claveLocal, v, recordar); }
+function trasIngreso(r) {
+  if (!r.configurado || !r.llave) { cargando(false); verCaja('caja-llave'); return; }
+  cargarPanel(r.llave);
+}
+function cargarPanel(llave) {
+  estado.llave = llave;
   cargando(true, 'Entrando…');
   gh('').then(function (repo) {
     if (repo.permissions && !repo.permissions.push) throw errorGH(403);
@@ -403,24 +469,78 @@ function entrar(llave, recordar) {
     estado.commitBase = r[0];
     estado.sitio = JSON.parse(r[1]); estado.numeros = JSON.parse(r[2]); estado.arts = JSON.parse(r[3]).articulos || [];
     if (!estado.numeros.numeros) estado.numeros.numeros = [];
-    guardarLS(CONFIG.claveLocal, estado.llave, recordar);
     $('vista-ingreso').classList.add('oculto'); $('vista-panel').classList.remove('oculto'); $('acciones-barra').classList.remove('oculto');
     cargando(false); pintarTodo();
   }).catch(function (e) {
     cargando(false); estado.llave = '';
-    if (e.status === 401) borrarLS(CONFIG.claveLocal);
-    $('vista-ingreso').classList.remove('oculto');
-    aviso('aviso-ingreso', 'error', e.message);
+    if (e.status === 401 || e.status === 403 || e.status === 404) { verCaja('caja-llave'); aviso('aviso-llave', 'error', 'La llave de GitHub guardada ya no funciona (' + e.message + ') Cree una nueva y péguela aquí.'); return; }
+    verCaja('caja-entrar'); aviso('aviso-ingreso', 'error', e.message);
   });
 }
-$('btn-entrar').onclick = function () { entrar($('llave').value, $('recordar').checked); };
-$('llave').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('btn-entrar').click(); });
+$('ing-correo').value = CONFIG.correo;
+$('btn-entrar').onclick = function () {
+  var correo = $('ing-correo').value.trim(), clave = $('ing-clave').value, recordar = $('recordar').checked;
+  if (!correo || !clave) { aviso('aviso-ingreso', 'error', 'Escriba su correo y su contraseña.'); return; }
+  cargando(true, 'Entrando…'); aviso('aviso-ingreso', '', '');
+  api('entrar', { correo: correo, clave: clave, recordar: recordar }).then(function (r) {
+    $('ing-clave').value = ''; guardarSesion(r.sesion, recordar); trasIngreso(r);
+  }).catch(function (e) { cargando(false); aviso('aviso-ingreso', 'error', e.message); });
+};
+$('ing-clave').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('btn-entrar').click(); });
+function pedirEnlace(ev) {
+  ev.preventDefault();
+  var correo = $('ing-correo').value.trim();
+  if (!correo) { aviso('aviso-ingreso', 'error', 'Escriba primero su correo.'); return; }
+  cargando(true, 'Enviando el correo…');
+  api('solicitar', { correo: correo }).then(function () {
+    cargando(false);
+    aviso('aviso-ingreso', 'ok', 'Listo. Si ese correo tiene acceso al panel, le llegará en unos minutos un mensaje con un enlace para crear su contraseña. Revise también la carpeta de spam. El enlace vence en 1 hora.');
+  }).catch(function (e) { cargando(false); aviso('aviso-ingreso', 'error', e.message); });
+}
+$('btn-olvido').onclick = pedirEnlace;
+$('btn-primera').onclick = pedirEnlace;
+$('btn-clave-nueva').onclick = function () {
+  var c1 = $('nueva-clave').value, c2 = $('nueva-clave2').value;
+  if (c1.length < 8) { aviso('aviso-nueva', 'error', 'La contraseña debe tener al menos 8 caracteres.'); return; }
+  if (c1 !== c2) { aviso('aviso-nueva', 'error', 'Las dos contraseñas no coinciden.'); return; }
+  var codigo = (location.hash.match(/clave=([a-f0-9]+)/) || [])[1] || '';
+  cargando(true, 'Guardando…');
+  api('fijar', { codigo: codigo, clave: c1, recordar: true }).then(function (r) {
+    history.replaceState(null, '', location.pathname);
+    $('nueva-clave').value = $('nueva-clave2').value = '';
+    guardarSesion(r.sesion, true); trasIngreso(r);
+  }).catch(function (e) { cargando(false); aviso('aviso-nueva', 'error', e.message); });
+};
+$('btn-llave').onclick = function () {
+  var llave = $('llave').value.trim();
+  if (!/^(github_pat_|ghp_)/.test(llave)) { aviso('aviso-llave', 'error', 'Eso no parece una llave de GitHub. Debe empezar por «github_pat_».'); return; }
+  cargando(true, 'Comprobando la llave…');
+  api('guardar_llave', { sesion: leerLS(CONFIG.claveLocal), llave: llave }).then(function (r) {
+    $('llave').value = ''; cargarPanel(r.llave);
+  }).catch(function (e) {
+    cargando(false);
+    if (e.status === 401) { borrarLS(CONFIG.claveLocal); verCaja('caja-entrar'); aviso('aviso-ingreso', 'error', e.message); return; }
+    aviso('aviso-llave', 'error', e.message);
+  });
+};
 $('btn-salir').onclick = function () {
   if (estado.cambiosSinGuardar && !confirm('Tiene cambios sin publicar. ¿Salir de todos modos?')) return;
-  borrarLS(CONFIG.claveLocal); estado.cambiosSinGuardar = false; location.reload();
+  var v = leerLS(CONFIG.claveLocal); borrarLS(CONFIG.claveLocal); estado.cambiosSinGuardar = false;
+  (v ? api('salir', { sesion: v }).catch(function () {}) : Promise.resolve()).then(function () { location.reload(); });
 };
 window.addEventListener('beforeunload', function (e) { if (estado.cambiosSinGuardar) { e.preventDefault(); e.returnValue = ''; } });
-(function () { var g = leerLS(CONFIG.claveLocal); if (g) entrar(g, true); })();
+(function () {
+  window.addEventListener('hashchange', function () { if (/clave=[a-f0-9]+/.test(location.hash)) { $('vista-panel').classList.add('oculto'); $('acciones-barra').classList.add('oculto'); verCaja('caja-nueva'); } });
+  borrarLS('panel-revista-llave'); // limpia la llave vieja que antes se guardaba en el equipo
+  if (/clave=[a-f0-9]+/.test(location.hash)) { verCaja('caja-nueva'); return; }
+  var v = leerLS(CONFIG.claveLocal);
+  if (!v) { verCaja('caja-entrar'); return; }
+  cargando(true, 'Entrando…');
+  api('sesion', { sesion: v }).then(trasIngreso).catch(function (e) {
+    cargando(false); if (e.status === 401) borrarLS(CONFIG.claveLocal);
+    verCaja('caja-entrar'); if (e.status !== 401) aviso('aviso-ingreso', 'error', e.message);
+  });
+})();
 
 function pintarTodo() { pintarArts(); pintarNums(); cargarFormularios(); }
 
@@ -452,6 +572,7 @@ function cargarFormularios() {
   pintarAvisos(estado.sitio.avisos || []);
   pintarMiembros((estado.sitio.comite && estado.sitio.comite.miembros) || []);
   pintarGrupos((estado.sitio.formacion && estado.sitio.formacion.cursos && estado.sitio.formacion.cursos.grupos) || []);
+  pintarPol(estado.sitio.politicas || []);
 }
 document.querySelectorAll('[data-campo]').forEach(function (el) { el.addEventListener('input', marcarCambio); el.addEventListener('change', marcarCambio); });
 function leerFormularioPanel(panel, s) {
@@ -472,17 +593,20 @@ function renglones(contId, lista, campos, alQuitar) {
     d.appendChild(Object.assign(boton('Quitar', 'b-peligro b-chico quitar', function () { lista.splice(i, 1); marcarCambio(); alQuitar(lista); }), {}));
     campos.forEach(function (c) {
       var l = document.createElement('label'); l.textContent = c[1];
-      var inp = c[2] === 'area' ? document.createElement('textarea') : document.createElement('input');
-      if (c[2] !== 'area') inp.type = c[2] || 'text';
+      var inp = (c[2] === 'area' || c[2] === 'largo') ? document.createElement('textarea') : document.createElement('input');
+      if (c[2] !== 'area' && c[2] !== 'largo') inp.type = c[2] || 'text';
+      if (c[2] === 'largo') inp.className = 'alto';
       var v = it[c[0]]; inp.value = Array.isArray(v) ? v.join('\n') : (v || '');
       if (c[3]) inp.placeholder = c[3];
-      inp.addEventListener('input', function () { it[c[0]] = c[2] === 'area' ? inp.value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean) : inp.value.trim(); marcarCambio(); });
+      inp.addEventListener('input', function () { it[c[0]] = c[2] === 'largo' ? inp.value.replace(/\r/g, '').trim() : c[2] === 'area' ? inp.value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean) : inp.value.trim(); marcarCambio(); });
       d.appendChild(l); d.appendChild(inp);
     });
     cont.appendChild(d);
   });
 }
-var avisosEdit = [], miembrosEdit = [], gruposEdit = [];
+var avisosEdit = [], miembrosEdit = [], gruposEdit = [], polEdit = [];
+function pintarPol(l) { polEdit = l === polEdit ? l : clonar(l); renglones('pol-lista', polEdit, [['titulo', 'Título'], ['texto', 'Texto', 'largo']], pintarPol); }
+$('btn-mas-pol').onclick = function () { polEdit.push({ id: '', titulo: '', texto: '' }); marcarCambio(); pintarPol(polEdit); };
 function pintarAvisos(l) { avisosEdit = l === avisosEdit ? l : clonar(l); renglones('p-avisos', avisosEdit, [['texto', 'Texto del aviso'], ['enlace', 'Enlace (opcional)', 'url', 'https://…'], ['textoEnlace', 'Texto del enlace (opcional)', 'text', 'Ver más']], pintarAvisos); }
 function pintarMiembros(l) { miembrosEdit = l === miembrosEdit ? l : clonar(l); renglones('c-miembros', miembrosEdit, [['cargo', 'Cargo', 'text', 'Ej.: Comité científico / Par evaluador'], ['nombre', 'Nombre y títulos'], ['detalle', 'Formación y vinculación']], pintarMiembros); }
 function pintarGrupos(l) { gruposEdit = l === gruposEdit ? l : clonar(l); renglones('f-grupos', gruposEdit, [['titulo', 'Nombre del grupo'], ['items', 'Cursos (uno por renglón)', 'area']], pintarGrupos); }
@@ -500,6 +624,19 @@ document.querySelectorAll('[data-guardar]').forEach(function (b) {
       if (cand.sitio.avisos.some(function (x) { return x.enlace && !/^(https?:\/\/|\/)/.test(x.enlace); })) { aviso(avisoId, 'error', 'Los enlaces de los avisos deben empezar por https://'); return; }
       if (!cand.sitio.contacto.correo || !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(cand.sitio.contacto.correo)) { aviso(avisoId, 'error', 'Revise el correo editorial.'); return; }
     }
+    if (panel === 'politicas') {
+      var usados = {};
+      cand.sitio.politicas = polEdit.filter(function (x) { return x.titulo && x.texto; }).map(function (x) {
+        var id = x.id || F.slugify(x.titulo).split('-').slice(0, 4).join('-') || 'politica', b = id, k = 2;
+        while (usados[id]) id = b + '-' + (k++); usados[id] = 1;
+        return { id: id, titulo: x.titulo, texto: x.texto };
+      });
+    }
+    if (panel === 'portada') {
+      var bo = cand.sitio.boletin || {}, ms = cand.sitio.manuscritos || {};
+      if ((bo.servicio && !/^https:\/\//.test(bo.servicio)) || (ms.servicio && !/^https:\/\//.test(ms.servicio))) { aviso(avisoId, 'error', 'Las direcciones de los servicios deben empezar por https://'); return; }
+      if (bo.mostrar && !bo.servicio) { aviso(avisoId, 'error', 'El boletín todavía no tiene servicio configurado. Desmarque «Mostrar la caja del boletín» o hable con SkyNet Genesis.'); return; }
+    }
     if (panel === 'comite') cand.sitio.comite.miembros = miembrosEdit.filter(function (x) { return x.nombre; });
     if (panel === 'formacion') {
       cand.sitio.formacion.cursos.grupos = gruposEdit.filter(function (x) { return x.titulo || (x.items || []).length; });
@@ -510,7 +647,7 @@ document.querySelectorAll('[data-guardar]').forEach(function (b) {
       if (de && !/^https?:\/\//.test(de)) { aviso(avisoId, 'error', 'El enlace del diplomado debe empezar por https://'); return; }
     }
     if (panel === 'convocatoria' && cand.sitio.convocatoria.mostrar && !cand.sitio.convocatoria.titulo) { aviso(avisoId, 'error', 'Escriba el título de la convocatoria o desmarque «Mostrar».'); return; }
-    var nombres = { convocatoria: 'convocatoria y autores', portada: 'portada y avisos', comite: 'comité editorial', formacion: 'formación' };
+    var nombres = { convocatoria: 'convocatoria y autores', portada: 'portada y avisos', comite: 'comité editorial', formacion: 'formación', politicas: 'políticas editoriales' };
     publicar(cand, 'Actualización de ' + nombres[panel], avisoId, cargarFormularios);
   };
 });
@@ -546,16 +683,16 @@ function abrirNum(n, base) {
   numEdit = n ? clonar(n) : Object.assign({ id: '', periodo: '', tema: '' }, base);
   $('titulo-editor-num').textContent = n ? 'Editar número' : 'Nuevo número';
   $('n-vol').value = numEdit.volumen; $('n-num').value = numEdit.numero; $('n-anio').value = numEdit.anio;
-  $('n-periodo').value = numEdit.periodo || ''; $('n-tema').value = numEdit.tema || '';
+  $('n-periodo').value = numEdit.periodo || ''; $('n-tema').value = numEdit.tema || ''; $('n-presentacion').value = numEdit.presentacion || '';
   $('n-actual').checked = n ? estado.sitio.numeroActual === n.id : true;
   aviso('aviso-num', '', ''); $('editor-num').classList.remove('oculto'); $('editor-num').scrollIntoView({ behavior: 'smooth' });
 }
-['n-vol', 'n-num', 'n-anio', 'n-periodo', 'n-tema', 'n-actual'].forEach(function (id) { $(id).addEventListener('input', marcarCambio); });
+['n-vol', 'n-num', 'n-anio', 'n-periodo', 'n-tema', 'n-presentacion', 'n-actual'].forEach(function (id) { $(id).addEventListener('input', marcarCambio); });
 $('btn-cancelar-num').onclick = function () { estado.cambiosSinGuardar = false; $('editor-num').classList.add('oculto'); };
 $('btn-guardar-num').onclick = function () {
   var n = clonar(numEdit);
   n.volumen = parseInt($('n-vol').value, 10); n.numero = parseInt($('n-num').value, 10); n.anio = parseInt($('n-anio').value, 10);
-  n.periodo = $('n-periodo').value.trim(); n.tema = $('n-tema').value.trim();
+  n.periodo = $('n-periodo').value.trim(); n.tema = $('n-tema').value.trim(); n.presentacion = $('n-presentacion').value.replace(/\r/g, '').trim();
   if (!(n.volumen > 0 && n.numero > 0 && n.anio > 1900)) { aviso('aviso-num', 'error', 'Revise volumen, número y año.'); return; }
   n.titulo = tituloNumero(n);
   var cand = candidato(), L = cand.numeros.numeros;
@@ -617,7 +754,7 @@ function pintarAutores() {
   artEdit.autores.forEach(function (x, i) {
     var d = document.createElement('div'); d.className = 'renglon';
     if (artEdit.autores.length > 1) d.appendChild(boton('Quitar', 'b-peligro b-chico quitar', function () { artEdit.autores.splice(i, 1); marcarCambio(); pintarAutores(); }));
-    var campos = [['nombre', 'Nombre completo'], ['citacion', 'Cómo aparece en la cita (Apellidos, Nombre)'], ['institucion', 'Institución (ciudad, país)']];
+    var campos = [['nombre', 'Nombre completo'], ['citacion', 'Cómo aparece en la cita (Apellidos, Nombre)'], ['institucion', 'Institución'], ['ciudad', 'Ciudad y país'], ['orcid', 'ORCID (opcional, 0000-0000-0000-0000)']];
     var refs = {};
     campos.forEach(function (c) {
       var l = document.createElement('label'); l.textContent = c[1];
@@ -632,14 +769,15 @@ function pintarAutores() {
     cont.appendChild(d);
   });
 }
-$('btn-mas-autor').onclick = function () { artEdit.autores.push({ nombre: '', citacion: '', institucion: '' }); marcarCambio(); pintarAutores(); };
+$('btn-mas-autor').onclick = function () { artEdit.autores.push({ nombre: '', citacion: '', institucion: '', ciudad: '', orcid: '' }); marcarCambio(); pintarAutores(); };
 $('btn-nuevo-art').onclick = function () { abrirArt(null); };
 function abrirArt(a) {
   esNuevo = !a;
-  artEdit = a ? clonar(a) : { slug: '', titulo: '', tipo: 'Artículo de revisión', autores: [{ nombre: '', citacion: '', institucion: '' }], anio: new Date().getFullYear(), numero: estado.sitio.numeroActual || '', paginaInicio: null, paginaFin: null, paginas: null, referencias: null, resumen: '', palabrasClave: '', pdf: '', diplomado: false, orden: 0 };
+  artEdit = a ? clonar(a) : { slug: '', titulo: '', tipo: 'Artículo de revisión', autores: [{ nombre: '', citacion: '', institucion: '', ciudad: '', orcid: '' }], anio: new Date().getFullYear(), numero: estado.sitio.numeroActual || '', paginaInicio: null, paginaFin: null, paginas: null, referencias: null, resumen: '', palabrasClave: '', tituloIngles: '', abstract: '', keywords: '', fechaRecibido: '', fechaAceptado: '', fechaPublicado: new Date().toISOString().slice(0, 10), doi: '', pdf: '', diplomado: false, orden: 0 };
   if (!artEdit.autores || !artEdit.autores.length) artEdit.autores = [{ nombre: '', citacion: '', institucion: '' }];
   $('titulo-editor-art').textContent = esNuevo ? 'Nuevo artículo' : 'Editar artículo';
-  $('a-titulo').value = artEdit.titulo; $('a-tipo').value = artEdit.tipo || ''; $('a-numero').value = artEdit.numero || ''; $('a-anio').value = artEdit.anio || '';
+  $('a-titulo').value = artEdit.titulo; $('a-titulo-en').value = artEdit.tituloIngles || '';
+  $('a-frec').value = artEdit.fechaRecibido || ''; $('a-facep').value = artEdit.fechaAceptado || ''; $('a-fpub').value = artEdit.fechaPublicado || ''; $('a-doi').value = artEdit.doi || ''; $('a-tipo').value = artEdit.tipo || ''; $('a-numero').value = artEdit.numero || ''; $('a-anio').value = artEdit.anio || '';
   $('a-pini').value = artEdit.paginaInicio || ''; $('a-pfin').value = artEdit.paginaFin || ''; $('a-paginas').value = artEdit.paginas || ''; $('a-refs').value = artEdit.referencias == null ? '' : artEdit.referencias;
   $('a-resumen').value = artEdit.resumen || ''; $('a-claves').value = artEdit.palabrasClave || '';
   $('a-abstract').value = artEdit.abstract || ''; $('a-keywords').value = artEdit.keywords || '';
@@ -648,7 +786,7 @@ function abrirArt(a) {
   aviso('aviso-editor', '', ''); aviso('aviso-panel', '', '');
   pintarAutores(); verPanel('editor-art'); $('a-titulo').focus();
 }
-['a-titulo', 'a-tipo', 'a-numero', 'a-anio', 'a-pini', 'a-pfin', 'a-paginas', 'a-refs', 'a-resumen', 'a-claves', 'a-abstract', 'a-keywords', 'a-diplomado'].forEach(function (id) { $(id).addEventListener('input', marcarCambio); $(id).addEventListener('change', marcarCambio); });
+['a-titulo', 'a-titulo-en', 'a-frec', 'a-facep', 'a-fpub', 'a-doi', 'a-tipo', 'a-numero', 'a-anio', 'a-pini', 'a-pfin', 'a-paginas', 'a-refs', 'a-resumen', 'a-claves', 'a-abstract', 'a-keywords', 'a-diplomado'].forEach(function (id) { $(id).addEventListener('input', marcarCambio); $(id).addEventListener('change', marcarCambio); });
 var pdfPendiente = null; // {dataUrl, nombre, tamano}
 $('a-pdf').addEventListener('change', function () {
   var f = this.files && this.files[0]; this.value = ''; if (!f) return;
@@ -669,7 +807,10 @@ function leerArt() {
   var ab = $('a-abstract').value.replace(/\s*\n\s*/g, ' ').trim(), kw = $('a-keywords').value.trim();
   if (ab) a.abstract = ab; else delete a.abstract; if (kw) a.keywords = kw; else delete a.keywords;
   a.diplomado = $('a-diplomado').checked;
-  a.autores = a.autores.map(function (x) { return { nombre: (x.nombre || '').trim(), citacion: (x.citacion || citacionDe(x.nombre)).trim(), institucion: (x.institucion || '').trim() }; }).filter(function (x) { return x.nombre; });
+  a.tituloIngles = $('a-titulo-en').value.replace(/\s+/g, ' ').trim();
+  a.fechaRecibido = $('a-frec').value; a.fechaAceptado = $('a-facep').value; a.fechaPublicado = $('a-fpub').value;
+  a.doi = $('a-doi').value.trim().replace(/^https?:\/\/(dx\.)?doi\.org\//i, '');
+  a.autores = a.autores.map(function (x) { return { nombre: (x.nombre || '').trim(), citacion: (x.citacion || citacionDe(x.nombre)).trim(), institucion: (x.institucion || '').trim(), ciudad: (x.ciudad || '').trim(), orcid: (x.orcid || '').trim().replace(/^https?:\/\/orcid\.org\//i, '').toUpperCase() }; }).filter(function (x) { return x.nombre; });
   return a;
 }
 function validarArt(a) {
@@ -678,6 +819,11 @@ function validarArt(a) {
   if (!a.anio || a.anio < 1950 || a.anio > 2100) return 'Revise el año.';
   if (a.paginaInicio && a.paginaFin && a.paginaFin < a.paginaInicio) return 'La página final no puede ser menor que la inicial.';
   if (!a.resumen) return 'Escriba el resumen (lo usan Google Académico y Latindex).';
+  var malo = a.autores.filter(function (x) { return x.orcid && !/^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$/.test(x.orcid); })[0];
+  if (malo) return 'El ORCID de ' + malo.nombre + ' no tiene la forma 0000-0000-0000-0000.';
+  if (a.doi && !/^10\.\d{4,9}\/\S+$/.test(a.doi)) return 'El DOI debe empezar por «10.» (por ejemplo 10.12345/rcm.2026.001).';
+  if (a.fechaRecibido && a.fechaAceptado && a.fechaAceptado < a.fechaRecibido) return 'La fecha de aceptado no puede ser anterior a la de recibido.';
+  if (a.fechaAceptado && a.fechaPublicado && a.fechaPublicado < a.fechaAceptado) return 'La fecha de publicado no puede ser anterior a la de aceptado.';
   return '';
 }
 function asignarSlug(a, arts) {
