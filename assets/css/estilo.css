@@ -19,7 +19,7 @@ img{max-width:100%}
 .brand b{line-height:1.15;font-family:'Barlow Condensed',sans-serif;font-size:22px;letter-spacing:.3px;display:block;color:var(--azul)}
 .brand small{color:var(--suave);font-size:12px;display:block}
 nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
-nav a{color:var(--texto);text-decoration:none;padding:7px 10px;border-radius:8px;font-size:14px;font-weight:600}
+nav a{color:var(--texto);text-decoration:none;padding:7px 8px;border-radius:8px;font-size:13.5px;font-weight:600;white-space:nowrap}
 nav a:hover{background:var(--azul-claro);color:var(--azul)}
 .menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--borde);border-radius:8px;padding:6px;color:var(--azul);cursor:pointer}
 
@@ -70,7 +70,59 @@ footer b{color:#fff}footer a{color:#fff}
 .sky{display:flex;align-items:center;gap:8px}
 .wa{position:fixed;right:16px;bottom:16px;z-index:25;background:var(--wa);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:12px 18px;box-shadow:0 4px 14px rgba(0,0,0,.25);font-size:15px}
 
-@media(max-width:860px){
+/* Utilidades */
+.oculto{display:none!important}
+.oculto-visual{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.trampa{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+
+/* Pie */
+.pie-base{width:100%;border-top:1px solid rgba(255,255,255,.12);padding-top:12px;font-size:13px;color:#9fb0bf}
+footer a.ingresar{color:#9fb0bf;text-decoration:none}footer a.ingresar:hover{color:#fff;text-decoration:underline}
+
+/* Buscador */
+.buscador{display:flex;gap:8px;margin:0 0 16px}
+.buscador input{flex:1;min-width:0}
+input[type=search],input[type=text],input[type=email],input:not([type]),select,textarea{font:inherit;color:var(--texto);background:#fff;border:1.5px solid var(--borde);border-radius:10px;padding:9px 12px;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul2);box-shadow:0 0 0 3px rgba(24,103,176,.15)}
+textarea{min-height:110px;resize:vertical}
+input[type=file]{font:inherit;font-size:14px;margin:4px 0}
+
+/* Tarjetas de número */
+.numero-card h3{font-size:22px;margin:.2em 0}.numero-card h3 a{text-decoration:none}
+
+/* Artículo */
+.membrete{font-size:13px;color:var(--suave);border-bottom:1px solid var(--borde);padding-bottom:8px;margin:0 0 12px;word-break:break-word}
+.titulo-en{font-style:italic;color:var(--suave);font-size:18px;margin:-4px 0 12px}
+.orcid{display:inline-block;background:#A6CE39;color:#fff;font-size:10px;font-weight:700;border-radius:50%;width:17px;height:17px;line-height:17px;text-align:center;text-decoration:none;vertical-align:1px}
+.fechas{font-size:13px}
+.compartir{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px;border-top:1px solid var(--borde);padding-top:14px}
+.compartir span{font-weight:700;font-size:14px;color:var(--suave)}
+.compartir .btn{padding:6px 12px;font-size:13px}
+
+/* Políticas */
+.indice ol{columns:2;margin:8px 0 0;padding-left:20px}.indice li{margin-bottom:4px}
+.politica{scroll-margin-top:84px}.politica h2{color:var(--azul);font-size:26px}
+
+/* Formularios */
+.form-envio label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+.form-envio label.chk{display:flex;gap:8px;align-items:flex-start;font-weight:400;margin:10px 0}
+.chk input{margin-top:5px;flex:none;width:auto}
+.fila2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-estado,.form-boletin{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.form-estado input,.form-boletin input{flex:1 1 200px;width:auto}
+.estado-form,.estado-consulta{margin-top:10px;border-radius:10px}
+.estado-form:empty,.estado-consulta:empty{display:none}
+.ok{background:var(--verde-claro);border-left:4px solid var(--verde);padding:10px 12px}
+.error{background:#FDECEC;border-left:4px solid #C0392B;padding:10px 12px}
+.espera{background:var(--azul-claro);border-left:4px solid var(--azul2);padding:10px 12px}
+.codigo{font-family:ui-monospace,monospace;font-size:17px;letter-spacing:.5px}
+.historial{margin:6px 0 0;padding-left:20px}
+.boletin{border-left:5px solid var(--azul);background:linear-gradient(135deg,#fff,var(--azul-claro))}
+.boletin h2{color:var(--azul);font-size:26px}
+
+@media(max-width:640px){.fila2{grid-template-columns:1fr}.indice ol{columns:1}.buscador{flex-wrap:wrap}.buscador .btn{width:100%;justify-content:center}}
+
+@media(max-width:1020px){
   .menu-btn{display:inline-flex}
   nav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;box-shadow:0 8px 16px rgba(11,79,138,.12);flex-direction:column;padding:8px 16px 14px}
   nav.abierto{display:flex}
