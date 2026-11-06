@@ -33,6 +33,38 @@
    "doi": ""
   },
   {
+   "slug": "respirando-con-vih",
+   "titulo": "Respirando con VIH: una mirada a las anomalías pulmonares y su tratamiento",
+   "tipo": "Artículo de revisión",
+   "autores": [
+    {
+     "nombre": "Ricardo Londoño González",
+     "citacion": "Londoño González, Ricardo",
+     "institucion": "Universidad del Magdalena (Colombia)",
+     "orcid": "",
+     "ciudad": ""
+    }
+   ],
+   "anio": 2026,
+   "numero": "v1n2",
+   "paginaInicio": 36,
+   "paginaFin": 40,
+   "paginas": 5,
+   "referencias": 7,
+   "resumen": "El artículo se enfoca en las anomalías respiratorias en pacientes con VIH. Se analizan las principales causas de estas afecciones, incluyendo infecciones pulmonares oportunistas y patologías no infecciosas, y se propone un proceso diagnóstico para orientar la etiología de la anomalía respiratoria. También se discuten el tratamiento, la farmacología y los cuidados generales para estas patologías en pacientes seroconvertidos. El objetivo es brindar una comprensión completa de las anomalías respiratorias en pacientes con VIH y herramientas para su manejo eficaz.",
+   "palabrasClave": "Anomalías respiratorias; VIH; tratamiento; farmacología; cuidados generales",
+   "pdf": "/articulos/respirando-con-vih.pdf",
+   "diplomado": false,
+   "orden": 1,
+   "tituloIngles": "Breathing with HIV: a look at pulmonary abnormalities and their treatment",
+   "abstract": "This article focuses on respiratory abnormalities in patients with HIV. It analyzes the main causes of these conditions, including opportunistic pulmonary infections and non-infectious diseases, and proposes a diagnostic process to guide the etiology of the respiratory abnormality. Treatment, pharmacology and general care for these conditions in seroconverted patients are also discussed. The aim is to provide a comprehensive understanding of respiratory abnormalities in patients with HIV and tools for their effective management.",
+   "keywords": "Respiratory abnormalities; HIV; treatment; pharmacology; general care",
+   "fechaRecibido": "",
+   "fechaAceptado": "",
+   "fechaPublicado": "2026-11-06",
+   "doi": ""
+  },
+  {
    "slug": "acetaminofen-folato-tea",
    "titulo": "Acetaminofén, metabolismo del folato y trastorno del espectro autista: de la evidencia epidemiológica a la plausibilidad terapéutica con ácido folínico",
    "tipo": "Artículo de revisión",
@@ -65,6 +97,38 @@
    "doi": ""
   },
   {
+   "slug": "candida-auris",
+   "titulo": "Candida auris",
+   "tipo": "Artículo de revisión",
+   "autores": [
+    {
+     "nombre": "Ricardo Londoño González",
+     "citacion": "Londoño González, Ricardo",
+     "institucion": "Universidad del Magdalena (Colombia); Universidad Rey Juan Carlos (España)",
+     "orcid": "",
+     "ciudad": ""
+    }
+   ],
+   "anio": 2026,
+   "numero": "v1n2",
+   "paginaInicio": 41,
+   "paginaFin": 46,
+   "paginas": 6,
+   "referencias": 41,
+   "resumen": "Candida auris es un hongo que crece como levadura, descrito por primera vez en 2009 a partir del canal auditivo externo de un paciente hospitalizado en Tokio. Los análisis del dominio 26S rDNA D1/D2, las secuencias de la región ITS del ADN ribosómico y los estudios quimiotaxonómicos indicaron una nueva especie con estrecha relación filogenética con Candida ruelliae y Candida haemulonii. Causa candidiasis en humanos, adquirida frecuentemente en centros médicos por pacientes inmunosuprimidos; puede causar fungemia, afectar el sistema nervioso central y diseminarse a cualquier órgano. Llama la atención por su rápida globalización y su multirresistencia a fármacos.",
+   "palabrasClave": "Candida auris; nueva especie; multirresistencia; infección asociada a la atención en salud",
+   "pdf": "/articulos/candida-auris.pdf",
+   "diplomado": false,
+   "orden": 2,
+   "tituloIngles": "Candida auris",
+   "abstract": "Candida auris is a fungus that grows as a yeast, first described in 2009 from the external ear canal of a patient hospitalized in Tokyo. Analyses of the 26S rDNA D1/D2 domain, sequences of the ITS region of ribosomal DNA and chemotaxonomic studies indicated a new species closely related phylogenetically to Candida ruelliae and Candida haemulonii. It causes candidiasis in humans, frequently acquired in healthcare facilities by immunosuppressed patients; it can cause fungemia, affect the central nervous system and spread to any organ. It is notable for its rapid global spread and its multidrug resistance.",
+   "keywords": "Candida auris; new species; multidrug resistance; healthcare-associated infection",
+   "fechaRecibido": "",
+   "fechaAceptado": "",
+   "fechaPublicado": "2026-11-06",
+   "doi": ""
+  },
+  {
    "slug": "multirresistencia-bacteriana",
    "titulo": "Multirresistencia bacteriana",
    "tipo": "Artículo de revisión",
@@ -94,70 +158,6 @@
    "fechaRecibido": "",
    "fechaAceptado": "",
    "fechaPublicado": "2026-10-05",
-   "doi": ""
-  },
-  {
-   "slug": "respirando-con-vih",
-   "titulo": "Respirando con VIH: una mirada a las anomalías pulmonares y su tratamiento",
-   "tipo": "Artículo de revisión",
-   "autores": [
-    {
-     "nombre": "Ricardo Londoño González",
-     "citacion": "Londoño González, Ricardo",
-     "institucion": "Universidad del Magdalena (Colombia)",
-     "orcid": "",
-     "ciudad": ""
-    }
-   ],
-   "anio": 2023,
-   "numero": "",
-   "paginaInicio": null,
-   "paginaFin": null,
-   "paginas": 5,
-   "referencias": 7,
-   "resumen": "El artículo se enfoca en las anomalías respiratorias en pacientes con VIH. Se analizan las principales causas de estas afecciones, incluyendo infecciones pulmonares oportunistas y patologías no infecciosas, y se propone un proceso diagnóstico para orientar la etiología de la anomalía respiratoria. También se discuten el tratamiento, la farmacología y los cuidados generales para estas patologías en pacientes seroconvertidos. El objetivo es brindar una comprensión completa de las anomalías respiratorias en pacientes con VIH y herramientas para su manejo eficaz.",
-   "palabrasClave": "Anomalías respiratorias; VIH; tratamiento; farmacología; cuidados generales",
-   "pdf": "/articulos/respirando-con-vih.pdf",
-   "diplomado": false,
-   "orden": 4,
-   "tituloIngles": "Breathing with HIV: a look at pulmonary abnormalities and their treatment",
-   "abstract": "This article focuses on respiratory abnormalities in patients with HIV. It analyzes the main causes of these conditions, including opportunistic pulmonary infections and non-infectious diseases, and proposes a diagnostic process to guide the etiology of the respiratory abnormality. Treatment, pharmacology and general care for these conditions in seroconverted patients are also discussed. The aim is to provide a comprehensive understanding of respiratory abnormalities in patients with HIV and tools for their effective management.",
-   "keywords": "Respiratory abnormalities; HIV; treatment; pharmacology; general care",
-   "fechaRecibido": "",
-   "fechaAceptado": "",
-   "fechaPublicado": "",
-   "doi": ""
-  },
-  {
-   "slug": "candida-auris",
-   "titulo": "Candida auris",
-   "tipo": "Artículo de revisión",
-   "autores": [
-    {
-     "nombre": "Ricardo Londoño González",
-     "citacion": "Londoño González, Ricardo",
-     "institucion": "Universidad del Magdalena (Colombia); Universidad Rey Juan Carlos (España)",
-     "orcid": "",
-     "ciudad": ""
-    }
-   ],
-   "anio": 2019,
-   "numero": "",
-   "paginaInicio": null,
-   "paginaFin": null,
-   "paginas": 6,
-   "referencias": 41,
-   "resumen": "Candida auris es un hongo que crece como levadura, descrito por primera vez en 2009 a partir del canal auditivo externo de un paciente hospitalizado en Tokio. Los análisis del dominio 26S rDNA D1/D2, las secuencias de la región ITS del ADN ribosómico y los estudios quimiotaxonómicos indicaron una nueva especie con estrecha relación filogenética con Candida ruelliae y Candida haemulonii. Causa candidiasis en humanos, adquirida frecuentemente en centros médicos por pacientes inmunosuprimidos; puede causar fungemia, afectar el sistema nervioso central y diseminarse a cualquier órgano. Llama la atención por su rápida globalización y su multirresistencia a fármacos.",
-   "palabrasClave": "Candida auris; nueva especie; multirresistencia; infección asociada a la atención en salud",
-   "pdf": "/articulos/candida-auris.pdf",
-   "diplomado": false,
-   "orden": 5,
-   "tituloIngles": "Candida auris",
-   "abstract": "Candida auris is a fungus that grows as a yeast, first described in 2009 from the external ear canal of a patient hospitalized in Tokyo. Analyses of the 26S rDNA D1/D2 domain, sequences of the ITS region of ribosomal DNA and chemotaxonomic studies indicated a new species closely related phylogenetically to Candida ruelliae and Candida haemulonii. It causes candidiasis in humans, frequently acquired in healthcare facilities by immunosuppressed patients; it can cause fungemia, affect the central nervous system and spread to any organ. It is notable for its rapid global spread and its multidrug resistance.",
-   "keywords": "Candida auris; new species; multidrug resistance; healthcare-associated infection",
-   "fechaRecibido": "",
-   "fechaAceptado": "",
-   "fechaPublicado": "",
    "doi": ""
   }
  ]

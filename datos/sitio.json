@@ -5,8 +5,14 @@
  "ciudad": "Santa Marta, Magdalena, Colombia",
  "etiquetaEpoca": "Nueva época · 2026",
  "descripcion": "Publicación científica de acceso abierto dedicada a la difusión de la investigación, las revisiones de tema y la educación médica en Colombia y América Latina.",
- "numeroActual": "v1n1",
- "avisos": [],
+ "numeroActual": "v1n2",
+ "avisos": [
+  {
+   "texto": "Ya está publicado el Número 2 (noviembre de 2026): infectología y salud pública.",
+   "enlace": "/numero/v1n2/",
+   "textoEnlace": "Ver el número"
+  }
+ ],
  "editorial": {
   "mostrar": true,
   "titulo": "Editorial · Una nueva época",
@@ -15,16 +21,16 @@
  },
  "convocatoria": {
   "mostrar": true,
-  "etiqueta": "Convocatoria abierta · Núm. 2",
-  "titulo": "Número 2 · Noviembre de 2026",
-  "texto": "La **Revista Colombiana de Medicina** invita a médicos, investigadores, docentes y estudiantes de ciencias de la salud a enviar artículos originales, revisiones de tema, reportes de caso y artículos de educación médica.\n\n**Tema central del Número 2:** epidemiología, infectología y salud pública. Se reciben también manuscritos de otras áreas de la medicina para números siguientes.",
-  "fechaLimite": "2026-10-20",
-  "fechaPublicacion": "2026-11-05",
+  "etiqueta": "Convocatoria abierta · Núm. 3",
+  "titulo": "Número 3 · Enero de 2027",
+  "texto": "La **Revista Colombiana de Medicina** invita a médicos, investigadores, docentes y estudiantes de ciencias de la salud a enviar artículos originales, revisiones de tema, reportes de caso y artículos de educación médica.\n\nSe reciben manuscritos de todas las áreas de la medicina.",
+  "fechaLimite": "2026-12-15",
+  "fechaPublicacion": "2027-01-15",
   "notas": [
    "Publicación gratuita para autores y en acceso abierto (CC BY-NC 4.0).",
    "Los manuscritos recibidos después de la fecha límite se evaluarán para números posteriores."
   ],
-  "asuntoCorreo": "Manuscrito - Convocatoria Número 2"
+  "asuntoCorreo": "Manuscrito - Convocatoria Número 3"
  },
  "autores": {
   "tipos": [
