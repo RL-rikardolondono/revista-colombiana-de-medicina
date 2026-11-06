@@ -6,7 +6,7 @@
   else raiz.Formato = fabrica();
 })(typeof self !== 'undefined' ? self : this, function () {
   var SITIO = 'https://revistacolombianademedicina.com';
-  var VERSION = '4';
+  var VERSION = '5';
   var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
   var WA_SOPORTE_TXT = 'Hola, vengo de la Revista Colombiana de Medicina y tengo una consulta.';
 
@@ -204,6 +204,7 @@
     var meta = [a.anio];
     if (rangoPaginas(a)) meta.push('pp. ' + rangoPaginas(a));
     if (a.paginas) meta.push(a.paginas + ' páginas');
+    if (a.reproduccion) meta = [a.reproduccion.traduccion ? 'Traducción al español' : 'Reproducción', 'Original: ' + a.reproduccion.revistaOriginal + ', ' + a.anio];
     return '<article class="card art"><span class="tag">' + esc(a.tipo) + '</span><span class="meta">' + esc(meta.join(' · ')) + '</span>' +
       '<h3><a href="/articulo/' + esc(a.slug) + '.html">' + esc(a.titulo) + '</a></h3>' +
       '<div class="meta">' + esc(nombresAutores(a)) + (instituciones(a) ? ' — ' + esc(instituciones(a)) : '') + '</div>' +
@@ -262,6 +263,9 @@
         (la.length ? la.map(function (a) { return tarjetaArticulo(a, numeros); }).join('') : '<p class="card meta">Los artículos de este número se publicarán pronto.</p>') +
         (la.length ? '<div class="btns"><a class="btn s" href="' + rutaNumero(actual) + '">Ver la página del número</a></div>' : '') + '</section>';
     }
+    var sel = articulosDe(arts, ID_SELECCION);
+    if (sel.length) c += '<section id="seleccion">' + cabezaSeccion('Selección de la literatura', 'Traducciones de acceso abierto con crédito a sus autores') + '<p class="meta">' + esc(TEXTO_SELECCION) + '</p>' +
+      sel.slice(0, 4).map(function (a) { return tarjetaArticulo(a, numeros); }).join('') + '<div class="btns"><a class="btn s" href="/seleccion/">Ver toda la selección</a></div></section>';
     // Archivo: números anteriores + artículos de etapas anteriores
     var anteriores = ordenarNumeros(numeros).filter(function (n) { return !actual || n.id !== actual.id; });
     var sueltos = ordenarArticulos(arts.filter(function (a) { return !a.numero; })).sort(function (a, b) { return (b.anio - a.anio) || ((a.orden || 0) - (b.orden || 0)); });
@@ -316,6 +320,7 @@
 
   // ---------- Página de artículo ----------
   function paginaArticulo(s, numeros, a) {
+    if (a.reproduccion) return paginaReproduccion(s, numeros, a);
     var n = numeroPorId(numeros, a.numero);
     var meta = '';
     meta += '<meta name="citation_title" content="' + esc(a.titulo) + '">\n';
@@ -379,6 +384,52 @@
     return documento(s, { ruta: '/404.html', titulo: 'Página no encontrada', descripcion: 'Página no encontrada', cuerpo: c, noindex: true });
   }
 
+
+  // ---------- Selección de la literatura (artículos de acceso abierto reproducidos o traducidos con su licencia) ----------
+  var ID_SELECCION = 'seleccion';
+  function paginaReproduccion(s, numeros, a) {
+    var r = a.reproduccion || {};
+    var doiUrl = r.doi ? 'https://doi.org/' + r.doi : (r.url || '');
+    var lic = '<a href="' + esc(r.licenciaUrl || '') + '" rel="license noopener" target="_blank">' + esc(r.licencia || '') + '</a>';
+    var meta = '<meta name="DC.rights" content="' + esc(r.licencia) + '">\n';
+    var ld = { '@context': 'https://schema.org', '@type': 'ScholarlyArticle', headline: a.titulo, name: a.titulo, inLanguage: 'es', url: urlArticulo(a), datePublished: r.fechaOriginal || String(a.anio),
+      author: (a.autores || []).map(function (x) { var o = { '@type': 'Person', name: x.nombre }; if (x.institucion) o.affiliation = { '@type': 'Organization', name: x.institucion }; return o; }),
+      license: r.licenciaUrl, isAccessibleForFree: true, isBasedOn: doiUrl || undefined, translationOfWork: r.traduccion && doiUrl ? { '@type': 'ScholarlyArticle', name: a.tituloOriginal, url: doiUrl } : undefined,
+      publisher: { '@type': 'Organization', name: r.revistaOriginal } };
+    meta += '<script type="application/ld+json">' + JSON.stringify(ld).replace(/</g, '\\u003c') + '</script>\n';
+    var autores = (a.autores || []).length > 4 ?
+      '<b>' + esc(nombresAutores(a)) + '</b></p><details><summary class="meta">Ver afiliaciones de los autores</summary><p class="meta">' + (a.autores || []).map(function (x) { return esc(x.nombre) + (x.institucion ? ': ' + esc(x.institucion) : ''); }).join('<br>') + '</p></details><p>' :
+      (a.autores || []).map(function (x) { return '<b>' + esc(x.nombre) + '</b>' + (x.institucion ? '<br><span class="meta">' + esc(x.institucion) + '</span>' : ''); }).join('<br>');
+    var accion = r.traduccion ? 'traducido al español' : 'reproducido';
+    var nota = '<div class="cite"><b>Selección de la literatura.</b> Este artículo se publicó originalmente en <i>' + esc(r.revistaOriginal) + '</i>' + (r.fechaOriginal ? ' (' + esc(fechaLarga(r.fechaOriginal)) + ')' : ' (' + esc(a.anio) + ')') +
+      ' bajo la licencia ' + lic + ', que permite su reproducción' + (r.traduccion ? ' y traducción' : '') + ' citando a los autores y la fuente. La ' + esc(s.nombre) + ' lo ha ' + accion + ' conforme a esa licencia; no es un artículo original de esta revista ni pasó por su revisión por pares.' +
+      (r.traduccion ? ' <b>Cambios realizados:</b> traducción no oficial al español; las figuras se consultan en el original. Ante cualquier diferencia, prevalece el texto original.' : '') +
+      (doiUrl ? '<br><b>Artículo original:</b> <a href="' + esc(doiUrl) + '" target="_blank" rel="noopener">' + esc(doiUrl) + '</a>' : '') + '</div>';
+    var c = '<p class="meta miga"><a href="/">Inicio</a> › <a href="/seleccion/">Selección de la literatura</a></p>' +
+      '<article class="card"><p class="membrete">Selección de la literatura · ' + (r.traduccion ? 'Traducción al español' : 'Reproducción') + ' · Original: ' + esc(r.revistaOriginal) + ', ' + esc(a.anio) + '</p>' +
+      '<span class="tag">' + esc(a.tipo) + '</span><h1 class="titulo-art">' + esc(a.titulo) + '</h1>' +
+      (a.tituloOriginal && a.tituloOriginal !== a.titulo ? '<p class="titulo-en">' + esc(a.tituloOriginal) + '</p>' : '') +
+      '<p>' + autores + '</p>' + nota +
+      (a.resumen ? '<h2>Resumen</h2>' + textoAHtml(a.resumen) : '') +
+      (a.palabrasClave ? '<p class="k"><b>Palabras clave:</b> ' + esc(a.palabrasClave) + '</p>' : '') +
+      (a.abstract ? '<h2>Abstract</h2><p lang="en">' + esc(a.abstract) + '</p>' + (a.keywords ? '<p class="k" lang="en"><b>Keywords:</b> ' + esc(a.keywords) + '</p>' : '') : '') +
+      '<div class="texto-completo">' + (a.texto || '') + '</div>' +
+      '<h2 style="margin-top:22px">Cómo citar el original</h2><div class="cite">' + esc(r.citaOriginal || '') + '</div>' +
+      '<p class="k" style="margin-top:14px">' + (r.traduccion ? 'Traducción publicada en' : 'Reproducido en') + ' la ' + esc(s.nombre) + ': ' + esc(urlArticulo(a)) + '. Licencia del original: ' + lic + '. ' +
+      (r.textoLicencia ? '<span lang="' + (r.idiomaOriginal === 'español' ? 'es' : 'en') + '">«' + esc(r.textoLicencia) + '»</span>' : '') + '</p>' +
+      '<div class="compartir"><span>Compartir:</span><a class="btn w" href="https://wa.me/?text=' + encodeURIComponent(a.titulo + ' ' + urlArticulo(a)) + '" target="_blank" rel="noopener">WhatsApp</a>' +
+      '<a class="btn s" href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(urlArticulo(a)) + '" target="_blank" rel="noopener">Facebook</a>' +
+      '<a class="btn s" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(urlArticulo(a)) + '" target="_blank" rel="noopener">LinkedIn</a></div></article>' + cajaBoletin(s);
+    return documento(s, { ruta: '/articulo/' + a.slug + '.html', titulo: a.titulo, tipo: 'article', descripcion: textoPlano(a.resumen, 300) || a.titulo, meta: meta, cuerpo: c });
+  }
+  var TEXTO_SELECCION = 'Artículos de acceso abierto publicados en otras revistas científicas que, por su interés para Colombia, la revista traduce al español o reproduce con autorización de su licencia Creative Commons. Cada uno conserva a sus autores y su cita original; no son artículos originales de esta revista.';
+  function paginaSeleccion(s, numeros, artsDatos) {
+    var la = articulosDe((artsDatos && artsDatos.articulos) || [], ID_SELECCION);
+    var c = '<p class="meta miga"><a href="/">Inicio</a> › <a href="/archivo/">Archivo</a></p><section>' + cabezaSeccion('Selección de la literatura', 'Traducciones y reproducciones de acceso abierto', 'h1') +
+      '<div class="card"><p>' + esc(TEXTO_SELECCION) + '</p></div>' + la.map(function (a) { return tarjetaArticulo(a, numeros); }).join('') + '</section>' + cajaBoletin(s);
+    return documento(s, { ruta: '/seleccion/', titulo: 'Selección de la literatura', descripcion: 'Artículos de acceso abierto de otras revistas, traducidos al español por la ' + s.nombre + ' con su licencia Creative Commons.', cuerpo: c });
+  }
+
   // ---------- Página de un número ----------
   function paginaNumero(s, numeros, artsDatos, n) {
     var la = articulosDe((artsDatos && artsDatos.articulos) || [], n.id);
@@ -404,6 +455,8 @@
       c += '<h2 class="subnum"><a href="' + rutaNumero(n) + '">' + esc(n.titulo) + '</a>' + (n.periodo ? ' <span class="meta">· ' + esc(n.periodo) + '</span>' : '') + '</h2>' +
         (la.length ? la.map(function (a) { return tarjetaArticulo(a, numeros); }).join('') : '<p class="meta">Los artículos de este número se publicarán pronto.</p>');
     });
+    var selA = articulosDe(arts, ID_SELECCION);
+    if (selA.length) c += '<h2 class="subnum"><a href="/seleccion/">Selección de la literatura</a> <span class="meta">· traducciones de acceso abierto</span></h2>' + selA.map(function (a) { return tarjetaArticulo(a, numeros); }).join('');
     if (sueltos.length) c += '<h2 class="subnum">Etapas anteriores de la revista</h2>' + sueltos.map(function (a) { return tarjetaArticulo(a, numeros); }).join('');
     c += '</div></section>';
     return documento(s, { ruta: '/archivo/', titulo: 'Archivo', descripcion: 'Archivo completo de la ' + s.nombre + ': todos los números y artículos en acceso abierto, con buscador.', cuerpo: c,
@@ -453,6 +506,7 @@
 
   function mapaDelSitio(arts, numeros) {
     var urls = ['/', '/archivo/', '/politicas/', '/enviar/'];
+    if (arts.some(function (a) { return a.numero === ID_SELECCION; })) urls.push('/seleccion/');
     ordenarNumeros(numeros).forEach(function (n) { urls.push(rutaNumero(n)); });
     ordenarArticulos(arts).forEach(function (a) { urls.push('/articulo/' + a.slug + '.html'); });
     return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
@@ -468,6 +522,7 @@
     arts.forEach(function (a) { out['articulo/' + a.slug + '.html'] = paginaArticulo(s, numeros, a); });
     ordenarNumeros(numeros).forEach(function (n) { out['numero/' + n.id + '/index.html'] = paginaNumero(s, numeros, artsDatos, n); });
     out['archivo/index.html'] = paginaArchivo(s, numeros, artsDatos);
+    if (arts.some(function (a) { return a.numero === ID_SELECCION; })) out['seleccion/index.html'] = paginaSeleccion(s, numeros, artsDatos);
     out['politicas/index.html'] = paginaPoliticas(s);
     out['enviar/index.html'] = paginaEnviar(s);
     out['sitemap.xml'] = mapaDelSitio(arts, numeros);
@@ -479,6 +534,6 @@
     numeroPorId: numeroPorId, ordenarArticulos: ordenarArticulos, ordenarNumeros: ordenarNumeros, articulosDe: articulosDe,
     comoCitar: comoCitar, paginaInicio: paginaInicio, paginaArticulo: paginaArticulo, pagina404: pagina404, paginaNumero: paginaNumero,
     paginaArchivo: paginaArchivo, paginaPoliticas: paginaPoliticas, paginaEnviar: paginaEnviar, membrete: membrete, rutaNumero: rutaNumero,
-    mapaDelSitio: mapaDelSitio, generarTodo: generarTodo, SITIO: SITIO, VERSION: VERSION
+    mapaDelSitio: mapaDelSitio, generarTodo: generarTodo, paginaSeleccion: paginaSeleccion, ID_SELECCION: ID_SELECCION, SITIO: SITIO, VERSION: VERSION
   };
 });

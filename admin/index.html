@@ -673,7 +673,7 @@ function pintarNums() {
     d.appendChild(t); d.appendChild(acc); cont.appendChild(d);
   });
   // selector de números en el editor de artículos
-  $('a-numero').innerHTML = '<option value="">Archivo (etapas anteriores, sin número)</option>' + lista.map(function (n) { return '<option value="' + F.esc(n.id) + '">' + F.esc(n.titulo) + '</option>'; }).join('');
+  $('a-numero').innerHTML = '<option value="">Archivo (etapas anteriores, sin número)</option><option value="seleccion">Selección de la literatura (traducciones)</option>' + lista.map(function (n) { return '<option value="' + F.esc(n.id) + '">' + F.esc(n.titulo) + '</option>'; }).join('');
 }
 $('btn-nuevo-num').onclick = function () {
   var l = F.ordenarNumeros(estado.numeros), u = l[0];
@@ -723,6 +723,7 @@ var artEdit = null, esNuevo = false;
 function pintarArts() {
   var cont = $('lista-arts'); cont.innerHTML = '';
   var grupos = F.ordenarNumeros(estado.numeros).map(function (n) { return { t: n.titulo + (estado.sitio.numeroActual === n.id ? ' ★' : ''), l: F.articulosDe(estado.arts, n.id) }; });
+  grupos.push({ t: 'Selección de la literatura (traducciones)', l: F.articulosDe(estado.arts, 'seleccion') });
   grupos.push({ t: 'Archivo (etapas anteriores)', l: F.articulosDe(estado.arts, '') });
   var hay = false;
   grupos.forEach(function (g) {

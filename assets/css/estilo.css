@@ -130,3 +130,9 @@ input[type=file]{font:inherit;font-size:14px;margin:4px 0}
   .top .in{position:relative}
 }
 @media(max-width:640px){.issue h2{font-size:26px}body{padding-bottom:70px}.brand b{font-size:19px}.brand small{font-size:11px}}
+.texto-completo{margin-top:18px;line-height:1.65}
+.texto-completo h2{margin-top:26px}.texto-completo h3{margin-top:18px}
+.texto-completo table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0;display:block;overflow-x:auto}
+.texto-completo th,.texto-completo td{border:1px solid #d5dde5;padding:6px 8px;text-align:left;vertical-align:top}
+.texto-completo th{background:#eef3f8}.texto-completo caption{caption-side:top;text-align:left;font-weight:600;padding:6px 0}
+.texto-completo ol li{word-break:break-word;margin-bottom:4px}
